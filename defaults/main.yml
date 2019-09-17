@@ -1,2 +1,2 @@
 ---
-# defaults file for ansible-role-mergerfs
+mergerfs_version: 2.28.2

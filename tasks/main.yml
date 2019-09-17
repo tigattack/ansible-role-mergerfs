@@ -1,2 +1,10 @@
 ---
-# tasks file for ansible-role-mergerfs
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install mergerfs package
+  become: yes
+  apt:
+    deb: "{{ package_url }}"
+    state: present
+  when: ansible_os_family == 'Debian'

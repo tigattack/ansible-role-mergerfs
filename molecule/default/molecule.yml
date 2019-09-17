@@ -6,18 +6,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ubuntu-disco
-    image: ubuntu:disco
-  - name: ubuntu-bionic
-    image: ubuntu:bionic
-  - name: ubuntu-xenial
-    image: ubuntu:xenial
-  - name: debian-buster
-    image: debian:buster
-  - name: debian-stretch
-    image: debian:stretch
-  - name: debian-jessie
-    image: debian:jessie
+  - name: debian
+    image: debian:latest
+  - name: ubuntu
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
