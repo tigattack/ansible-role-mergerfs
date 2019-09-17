@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Sylvain Prat
+  description: Install and configure Mergerfs in Debian systems
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - mergerfs
+    - union
+    - filesystem
+    - disk
+
+dependencies: []
