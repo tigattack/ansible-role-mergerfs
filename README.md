@@ -3,7 +3,7 @@ ansible-role-mergerfs
 
 A brief description of the role goes here.
 
-[![Build Status](https://api.travis-ci.com/sprat/ansible-role-mergerfs.svg?branch=master)](https://api.travis-ci.com/sprat/ansible-role-mergerfs)
+[![Build Status](https://api.travis-ci.com/sprat/ansible-role-mergerfs.svg?branch=master)](https://travis-ci.org/sprat/ansible-role-mergerfs)
 
 
 Requirements
