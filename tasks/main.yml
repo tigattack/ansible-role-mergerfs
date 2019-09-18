@@ -2,20 +2,20 @@
 - name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Install mergerfs package via apt
+- name: Install mergerfs package with apt
   become: yes
   apt:
     deb: "{{ package_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
-- name: Install mergerfs package via yum
+- name: Install mergerfs package with yum
   yum:
     name: "{{ package_url }}"
     state: present
   when: ansible_pkg_mgr == 'yum'
 
-- name: Install mergerfs package via dnf
+- name: Install mergerfs package with dnf
   dnf:
     name: "{{ package_url }}"
     state: present
