@@ -10,6 +10,10 @@ platforms:
     image: debian:latest
   - name: ubuntu
     image: ubuntu:latest
+  - name: fedora
+    image: fedora:latest
+  - name: centos
+    image: centos:latest
 provisioner:
   name: ansible
   lint:

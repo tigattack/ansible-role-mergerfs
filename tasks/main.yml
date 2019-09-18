@@ -8,3 +8,15 @@
     deb: "{{ package_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
+
+- name: Install mergerfs package via yum
+  yum:
+    name: "{{ package_url }}"
+    state: present
+  when: ansible_pkg_mgr == 'yum'
+
+- name: Install mergerfs package via dnf
+  dnf:
+    name: "{{ package_url }}"
+    state: present
+  when: ansible_pkg_mgr == 'dnf'
