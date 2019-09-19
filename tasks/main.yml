@@ -10,12 +10,14 @@
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
+  become: yes
   yum:
     name: "{{ package_url }}"
     state: present
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
+  become: yes
   dnf:
     name: "{{ package_url }}"
     state: present
