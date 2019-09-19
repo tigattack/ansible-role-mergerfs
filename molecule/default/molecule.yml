@@ -6,16 +6,23 @@ driver:
 lint:
   name: yamllint
 platforms:
+  # The `privileged: True` option is needed to use fuse and mount filesystems
+  # We cannot do that more securely yet due to a molecule issue: see
+  # https://github.com/ansible/molecule/issues/2307
   - name: debian
     image: debian:latest
+    privileged: True
   - name: ubuntu
     image: ubuntu:latest
+    privileged: True
   - name: fedora
     image: fedora:latest
+    privileged: True
     groups:
       - py3  # since fedora 30, some python2 libraries (such as python2-dnf) are obsoleted
   - name: centos
     image: centos:latest
+    privileged: True
 provisioner:
   name: ansible
   inventory:
