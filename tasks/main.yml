@@ -2,6 +2,13 @@
 - name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
+# TODO: determine latest version
+# - name: Determine latest version
+#   github_release:
+#     user: trapexit
+#     repo: mergerfs
+#     action: latest_release
+
 - name: Install mergerfs package with apt
   become: yes
   apt:
