@@ -1,5 +1,12 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    mergerfs_mounts:
+      - path: /mnt/data
+        branches:
+          - /mnt/data1
+          - /mnt/data2
+        options: allow_other,use_ino
   roles:
     - role: ansible-role-mergerfs

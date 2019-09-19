@@ -22,3 +22,13 @@
     name: "{{ package_url }}"
     state: present
   when: ansible_pkg_mgr == 'dnf'
+
+- name: Mount mergerfs filesystems
+  become: yes
+  mount:
+    fstype: fuse.mergerfs
+    src: "{{ ':'.join(item.branches) }}"
+    path: "{{ item.path }}"
+    opts: "{{ item.options | default('defaults') }}"
+    state: "{{ item.state | default('mounted') }}"
+  loop: "{{ mergerfs_mounts }}"
