@@ -1,14 +1,22 @@
 ---
 galaxy_info:
   author: Sylvain Prat
-  description: Install and configure Mergerfs in Linux systems
+  role_name: mergerfs
+  description: Install and configure Mergerfs — A featureful union filesystem
   license: MIT
-  min_ansible_version: 1.2
+  company: none
+  min_ansible_version: 2.3
   platforms:
     - name: Ubuntu
       versions:
         - all
     - name: Debian
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: EL
       versions:
         - all
   galaxy_tags:
