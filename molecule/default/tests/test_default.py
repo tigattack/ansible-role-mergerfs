@@ -7,9 +7,15 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts('all')
 
 
-def test_hosts_file(host):
-    f = host.file('/etc/hosts')
+def test_mount_point(host):
+    mount_point = host.mount_point('/mnt/data')
+    assert mount_point.exists
+    assert mount_point.filesystem == 'fuse.mergerfs'
+    assert 'allow_other' in mount_point.options
+    # assert 'use_ino' in mount_point.options
 
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+
+def test_data_files(host):
+    assert host.file('/mnt/data/file1.txt').exists
+    assert host.file('/mnt/data/file2.txt').exists
+    assert host.file('/mnt/data/file3.txt').exists
