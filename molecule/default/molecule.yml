@@ -18,16 +18,14 @@ platforms:
   - name: fedora
     image: fedora:latest
     privileged: True
-    groups:
-      - py3  # since fedora 30, some python2 libraries (such as python2-dnf) are obsoleted
   - name: centos
     image: centos:latest
     privileged: True
 provisioner:
   name: ansible
   inventory:
-    group_vars:
-      py3:
+    host_vars:
+      fedora:  # since fedora 30, some python2 libraries (such as python2-dnf) are obsoleted
         ansible_python_interpreter: python3
   lint:
     name: ansible-lint
