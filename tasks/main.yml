@@ -34,8 +34,8 @@
   become: yes
   mount:
     fstype: fuse.mergerfs
-    src: "{{ ':'.join(item.branches) }}"
-    path: "{{ item.path }}"
+    src: "{{ ':'.join(item.branches | mandatory) }}"
+    path: "{{ item.path | mandatory }}"
     opts: "{{ item.options | default('defaults') }}"
     state: "{{ item.state | default('mounted') }}"
   loop: "{{ mergerfs_mounts }}"
