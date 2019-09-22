@@ -1,32 +1,41 @@
 ---
+- block:
+    - name: Get latest release information from GitHub
+      uri:
+        url: "https://api.github.com/repos/trapexit/mergerfs/releases/latest"
+      register: mergerfs_latest_release
+    - name: Extract its version number
+      set_fact:
+        mergerfs_version: "{{ mergerfs_latest_release.json['tag_name'] }}"
+  delegate_to: localhost
+  run_once: True
+  when: mergerfs_version == "latest"
+
 - name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-# TODO: determine latest version
-# - name: Determine latest version
-#   github_release:
-#     user: trapexit
-#     repo: mergerfs
-#     action: latest_release
+- name: Determine package download url
+  set_fact:
+    pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ pkg_filename }}"
 
 - name: Install mergerfs package with apt
   become: yes
   apt:
-    deb: "{{ package_url }}"
+    deb: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
   become: yes
   yum:
-    name: "{{ package_url }}"
+    name: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
   become: yes
   dnf:
-    name: "{{ package_url }}"
+    name: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'dnf'
 
