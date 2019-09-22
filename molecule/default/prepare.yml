@@ -3,6 +3,7 @@
   hosts: all
   tasks:
     - name: "Create branches directories"
+      become: yes
       file:
         path: "{{ item }}"
         state: directory
@@ -11,6 +12,7 @@
         - /mnt/data2
 
     - name: "Create data files"
+      become: yes
       copy:
         content: "{{ item.content }}\n"
         dest: "{{ item.path }}"
