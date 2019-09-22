@@ -8,6 +8,7 @@
       set_fact:
         mergerfs_version: "{{ mergerfs_latest_release.json['tag_name'] }}"
   delegate_to: localhost
+  become: no
   run_once: True
   when: mergerfs_version == "latest"
 
