@@ -8,7 +8,7 @@
       set_fact:
         mergerfs_version: "{{ mergerfs_latest_release.json['tag_name'] }}"
   delegate_to: localhost
-  become: no
+  become: False
   run_once: True
   when: mergerfs_version == "latest"
 
@@ -20,28 +20,28 @@
     pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ pkg_filename }}"
 
 - name: Install mergerfs package with apt
-  become: yes
+  become: True
   apt:
     deb: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
-  become: yes
+  become: True
   yum:
     name: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
-  become: yes
+  become: True
   dnf:
     name: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'dnf'
 
 - name: Mount mergerfs filesystems
-  become: yes
+  become: True
   mount:
     fstype: fuse.mergerfs
     src: "{{ ':'.join(item.branches | mandatory) }}"
