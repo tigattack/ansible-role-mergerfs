@@ -3,7 +3,7 @@
   hosts: all
   vars:
     mergerfs_mounts:
-      - path: /mnt/data
+      - path: /mnt/storage
         branches:
           - /mnt/data1
           - /mnt/data2
