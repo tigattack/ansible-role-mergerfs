@@ -5,8 +5,7 @@
     mergerfs_mounts:
       - path: /mnt/storage
         branches:
-          - /mnt/data1
-          - /mnt/data2
+          - /mnt/data*
         options: allow_other,use_ino
   roles:
     - role: ansible-role-mergerfs
