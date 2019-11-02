@@ -4,9 +4,9 @@ mergerfs_version: latest
 
 # Mergerfs mountpoints to create. For example:
 # mergerfs_mounts:
-#   - path: /mnt/data
+#   - path: /mnt/storage
 #     branches:
-#       - /mnt/data1
-#       - /mnt/data2
+#       - /mnt/data*
+#       - /mnt/other
 #     options: allow_other,use_ino
 mergerfs_mounts: []
