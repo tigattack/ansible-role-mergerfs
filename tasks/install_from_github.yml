@@ -1,0 +1,45 @@
+---
+# Note: we don't use the GitHub API to retrieve the latest version because
+# it has rate limits which are hard to avoid in CI (we need a token, authenticate
+# with the API, etc.). Instead, we browse the latest release url which redirects
+# to the release page, where we can find the version number in the URL.
+- become: False
+  delegate_to: localhost
+  run_once: True
+  block:
+  - name: Get latest release information from GitHub
+    uri:
+      url: https://github.com/trapexit/mergerfs/releases/latest
+    register: github_release_page
+  - name: Set latest mergerfs version fact
+    set_fact:
+      mergerfs_version: "{{ github_release_page['url'].split('/')[-1] }}"
+  when: mergerfs_version == "latest"
+
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Determine package download url
+  set_fact:
+    pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ pkg_filename }}"
+
+- name: Install mergerfs package with apt
+  become: True
+  apt:
+    deb: "{{ pkg_url }}"
+    state: present
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Install mergerfs package with yum
+  become: True
+  yum:
+    name: "{{ pkg_url }}"
+    state: present
+  when: ansible_pkg_mgr == 'yum'
+
+- name: Install mergerfs package with dnf
+  become: True
+  dnf:
+    name: "{{ pkg_url }}"
+    state: present
+  when: ansible_pkg_mgr == 'dnf'
