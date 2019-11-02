@@ -27,8 +27,6 @@ provisioner:
     group_vars:
       all:
         ansible_user: ansible
-    host_vars:
-      fedora:  # since fedora 30, some python2 libraries (such as python2-dnf) are obsoleted
         ansible_python_interpreter: python3
   lint:
     name: ansible-lint
