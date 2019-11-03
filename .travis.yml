@@ -1,17 +1,30 @@
 ---
 language: python
-python:
-  - "3.6"
-
 services:
   - docker
 
-install:
-  - pip install -r requirements.txt
+env:
+  global:
+    - ROLE_NAME: mergerfs
+  matrix:
+    - MOLECULE_DIST: centos7
+    - MOLECULE_DIST: centos6
+    - MOLECULE_DIST: fedora31
+    - MOLECULE_DIST: fedora30
+    - MOLECULE_DIST: fedora29
+    - MOLECULE_DIST: ubuntu1804
+    - MOLECULE_DIST: ubuntu1604
+    - MOLECULE_DIST: debian10
+    - MOLECULE_DIST: debian9
+    - MOLECULE_DIST: debian8
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - mv ansible-role-$ROLE_NAME syprat.$ROLE_NAME
+  - cd syprat.$ROLE_NAME
 
 script:
-  - molecule --version
-  - ansible --version
   - molecule test
 
 # notifications:
