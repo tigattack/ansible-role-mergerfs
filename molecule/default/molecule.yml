@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: geerlingguy/docker-${MOLECULE_DIST:-debian10}-ansible
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -16,6 +16,8 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
 verifier:
   name: testinfra
   lint:
