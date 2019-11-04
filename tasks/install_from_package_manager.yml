@@ -1,0 +1,6 @@
+---
+- name: Install with package manager
+  become: True
+  package:
+    name: mergerfs
+    state: present
