@@ -21,7 +21,7 @@
 
 - name: Determine package download url
   set_fact:
-    pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ pkg_filename }}"
+    pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ mergerfs_pkg_filename }}"
 
 - name: Install mergerfs package with apt
   become: True

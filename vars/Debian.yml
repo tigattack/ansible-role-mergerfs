@@ -1,5 +1,4 @@
 ---
-distro: "{{ ansible_distribution|lower }}"
-release: "{{ ansible_distribution_release }}"
-arch: "{{ {'x86_64': 'amd64', 'i386': 'i386'}[ansible_userspace_architecture] }}"
-pkg_filename: "mergerfs_{{ mergerfs_version }}.{{ distro }}-{{ release }}_{{ arch }}.deb"
+mergerfs_dist: "{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}"
+mergerfs_arch: "{{ {'x86_64': 'amd64', 'i386': 'i386'}[ansible_userspace_architecture] }}"
+mergerfs_pkg_filename: "mergerfs_{{ mergerfs_version }}.{{ mergerfs_dist }}_{{ mergerfs_arch }}.deb"
