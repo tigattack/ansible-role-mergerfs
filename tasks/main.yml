@@ -1,8 +1,11 @@
 ---
-- name: Install mergerfs dependencies
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install mergerfs pre-requisites
   become: True
   package:
-    name: fuse
+    name: "{{ mergerfs_prerequisites }}"
     state: present
 
 - name: Include install tasks
