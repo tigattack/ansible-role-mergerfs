@@ -7,5 +7,12 @@
         branches:
           - /mnt/data*
         options: allow_other,use_ino
+  pre_tasks:
+    - name: update apt cache
+      become: True
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_pkg_mgr == 'apt'
   roles:
     - role: ansible-role-mergerfs
