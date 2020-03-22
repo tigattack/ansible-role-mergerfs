@@ -5,7 +5,7 @@ driver:
   name: docker
 lint: |
   yamllint .
-  ansible-lint
+  ansible-lint .
   flake8
 platforms:
   - name: instance
@@ -16,7 +16,5 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
-  playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
 verifier:
   name: testinfra
