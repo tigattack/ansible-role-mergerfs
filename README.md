@@ -42,4 +42,4 @@ MIT
 Author Information
 ------------------
 
-This role was created in 2019 by [Sylvain Prat](https://github.com/sprat).
+This role was created in 2020 by [Sylvain Prat](https://github.com/sprat).
