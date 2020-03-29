@@ -9,12 +9,16 @@ lint: |
   flake8
 platforms:
   - name: instance
-    image: geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible
+    image: geerlingguy/docker-${DISTRIB:-debian10}-ansible
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
 provisioner:
   name: ansible
+  inventory:
+    group_vars:
+      all:
+        mergerfs_install_mode: ${INSTALL_MODE:-github_releases}
 verifier:
   name: testinfra

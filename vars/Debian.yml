@@ -1,7 +1,8 @@
 ---
 mergerfs_prerequisites:
-  - xz-utils  # needed for deb installation
   - fuse
+  - xz-utils  # needed for deb installation
 mergerfs_dist: "{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}"
 mergerfs_arch: "{{ {'x86_64': 'amd64', 'i386': 'i386'}[ansible_userspace_architecture] }}"
-mergerfs_pkg_filename: "mergerfs_{{ mergerfs_version }}.{{ mergerfs_dist }}_{{ mergerfs_arch }}.deb"
+mergerfs_pkg_prefix: "mergerfs_"
+mergerfs_pkg_suffix: ".{{ mergerfs_dist }}_{{ mergerfs_arch }}.deb"

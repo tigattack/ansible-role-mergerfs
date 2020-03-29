@@ -9,19 +9,16 @@
   block:
   - name: Get latest release information from GitHub
     uri:
-      url: https://github.com/trapexit/mergerfs/releases/latest
+      url: "{{ mergerfs_github_releases_url }}/latest"
     register: github_release_page
   - name: Set latest mergerfs version fact
     set_fact:
       mergerfs_version: "{{ github_release_page['url'].split('/')[-1] }}"
   when: mergerfs_version == "latest"
 
-- name: Include OS-specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
-
 - name: Determine package download url
   set_fact:
-    pkg_url: "https://github.com/trapexit/mergerfs/releases/download/{{ mergerfs_version }}/{{ mergerfs_pkg_filename }}"
+    pkg_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
 
 - name: Install mergerfs package with apt
   become: True

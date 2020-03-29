@@ -4,23 +4,21 @@ python:
   - "3.6"
 services:
   - docker
-
 env:
-  matrix:
-    # - MOLECULE_DISTRO: centos7
-    # - MOLECULE_DISTRO: centos6
-    # - MOLECULE_DISTRO: fedora31
-    # - MOLECULE_DISTRO: fedora30
-    # - MOLECULE_DISTRO: fedora29
-    - MOLECULE_DISTRO: ubuntu1804
-    # - MOLECULE_DISTRO: ubuntu1604
-    # - MOLECULE_DISTRO: debian10
-    # - MOLECULE_DISTRO: debian9
-    # - MOLECULE_DISTRO: debian8
-
+  - INSTALL_MODE=github_releases DISTRIB=centos7
+  - INSTALL_MODE=github_releases DISTRIB=centos6
+  - INSTALL_MODE=github_releases DISTRIB=fedora31
+  - INSTALL_MODE=github_releases DISTRIB=fedora30
+  - INSTALL_MODE=github_releases DISTRIB=fedora29
+  - INSTALL_MODE=github_releases DISTRIB=ubuntu1804
+  - INSTALL_MODE=package_manager DISTRIB=ubuntu1804
+  - INSTALL_MODE=github_releases DISTRIB=ubuntu1604
+  - INSTALL_MODE=github_releases DISTRIB=debian10
+  - INSTALL_MODE=package_manager DISTRIB=debian10
+  - INSTALL_MODE=github_releases DISTRIB=debian9
+  - INSTALL_MODE=github_releases DISTRIB=debian8
 script:
   - molecule --version
   - molecule test
-
 # notifications:
 #   webhooks: https://galaxy.ansible.com/api/v1/notifications/

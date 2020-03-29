@@ -9,7 +9,7 @@
     state: present
 
 - name: Include install tasks
-  include_tasks: install_from_github_releases.yml
+  include_tasks: install_from_{{ mergerfs_install_mode }}.yml
 
 - name: Mount mergerfs filesystems
   become: True

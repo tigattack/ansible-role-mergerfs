@@ -1,5 +1,5 @@
 ---
-- name: Install with package manager
+- name: Install mergerfs package with package manager
   become: True
   package:
     name: mergerfs
