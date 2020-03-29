@@ -20,6 +20,13 @@
   set_fact:
     pkg_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
 
+- name: Install xz-utils package for .deb package installation
+  become: True
+  apt:
+    name: xz-utils
+    state: present
+  when: ansible_pkg_mgr == 'apt'
+
 - name: Install mergerfs package with apt
   become: True
   apt:
