@@ -10,10 +10,10 @@
   - name: Get latest release information from GitHub
     uri:
       url: "{{ mergerfs_github_releases_url }}/latest"
-    register: github_release_page
+    register: mergerfs_github_release_page
   - name: Set latest mergerfs version fact
     set_fact:
-      mergerfs_version: "{{ github_release_page['url'].split('/')[-1] }}"
+      mergerfs_version: "{{ mergerfs_github_release_page['url'].split('/')[-1] }}"
   when: mergerfs_version == "latest"
 
 - name: Determine package download url
