@@ -22,7 +22,7 @@ cfgv==3.1.0               # via pre-commit
 chardet==3.0.4            # via binaryornot, requests
 click-completion==0.5.2   # via molecule
 click-help-colors==0.8    # via molecule
-click==7.1.1              # via click-completion, click-help-colors, cookiecutter, molecule, pip-tools, python-gilt
+click==7.1.1              # via click-completion, click-help-colors, cookiecutter, molecule, python-gilt
 colorama==0.4.3           # via molecule, python-gilt
 cookiecutter==1.7.0       # via molecule
 coverage==5.0.4           # via pytest-cov
@@ -65,7 +65,6 @@ paramiko==2.7.1           # via molecule
 pathspec==0.7.0           # via yamllint
 pbr==5.4.4                # via keystoneauth1, openstacksdk, os-service-types, shade, stevedore
 pexpect==4.8.0            # via molecule
-pip-tools==4.5.1          # via -r requirements.in
 pluggy==0.13.1            # via molecule, pytest
 poyo==0.5.0               # via cookiecutter
 pre-commit==1.21.0        # via molecule
@@ -96,7 +95,7 @@ ruamel.yaml==0.16.10      # via ansible-lint
 sh==1.12.14               # via molecule, python-gilt
 shade==1.33.0             # via molecule
 shellingham==1.3.2        # via click-completion
-six==1.14.0               # via ansi2html, ansible-lint, bcrypt, click-completion, cryptography, docker, fasteners, keystoneauth1, mock, molecule, munch, openstacksdk, packaging, pip-tools, pre-commit, pynacl, pytest, pytest-verbose-parametrize, pytest-xdist, python-dateutil, stevedore, virtualenv, websocket-client
+six==1.14.0               # via ansi2html, ansible-lint, bcrypt, click-completion, cryptography, docker, fasteners, keystoneauth1, mock, molecule, munch, openstacksdk, packaging, pre-commit, pynacl, pytest, pytest-verbose-parametrize, pytest-xdist, python-dateutil, stevedore, virtualenv, websocket-client
 stevedore==1.32.0         # via keystoneauth1
 tabulate==0.8.6           # via molecule
 termcolor==1.1.0          # via pytest-sugar

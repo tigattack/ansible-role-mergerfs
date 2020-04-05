@@ -1,3 +1,2 @@
 molecule[test,lint,docker]
 pytest-html<2  # due to a bad requirement specification in molecule
-pip-tools
