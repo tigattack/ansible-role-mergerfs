@@ -8,15 +8,13 @@ ansi2html==1.5.2          # via molecule
 ansible-lint==4.2.0       # via molecule
 ansible==2.9.6            # via ansible-lint, molecule
 apipkg==1.5               # via execnet
-appdirs==1.4.3            # via openstacksdk, virtualenv
+appdirs==1.4.3            # via virtualenv
 arrow==0.15.5             # via jinja2-time
-aspy.yaml==1.3.0          # via pre-commit
-atomicwrites==1.3.0       # via pytest
 attrs==19.3.0             # via pytest
 bcrypt==3.1.7             # via paramiko
 binaryornot==0.4.4        # via cookiecutter
 cerberus==1.3.2           # via molecule
-certifi==2019.11.28       # via requests
+certifi==2020.4.5.1       # via requests
 cffi==1.14.0              # via bcrypt, cryptography, pynacl
 cfgv==3.1.0               # via pre-commit
 chardet==3.0.4            # via binaryornot, requests
@@ -25,89 +23,74 @@ click-help-colors==0.8    # via molecule
 click==7.1.1              # via click-completion, click-help-colors, cookiecutter, molecule, python-gilt
 colorama==0.4.3           # via molecule, python-gilt
 cookiecutter==1.7.0       # via molecule
-coverage==5.0.4           # via pytest-cov
-cryptography==2.8         # via ansible, openstacksdk, paramiko
-decorator==4.4.2          # via dogpile.cache, openstacksdk
+coverage==4.5.4           # via molecule, pytest-cov
+cryptography==2.9         # via ansible, paramiko
 distlib==0.3.0            # via virtualenv
+distro==1.5.0             # via selinux
 docker==4.2.0             # via molecule
-dogpile.cache==0.9.0      # via openstacksdk
 entrypoints==0.3          # via flake8
 execnet==1.7.1            # via pytest-xdist
 fasteners==0.15           # via python-gilt
 filelock==3.0.12          # via virtualenv
 flake8==3.7.9             # via molecule
 future==0.18.2            # via cookiecutter
-identify==1.4.12          # via pre-commit
+identify==1.4.14          # via pre-commit
 idna==2.9                 # via requests
-importlib-metadata==1.5.0  # via importlib-resources, pluggy, pre-commit, pytest, virtualenv
+importlib-metadata==1.6.0  # via importlib-resources, pluggy, pre-commit, pytest, virtualenv
 importlib-resources==1.4.0  # via pre-commit, virtualenv
-iso8601==0.1.12           # via keystoneauth1, openstacksdk
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.1            # via ansible, click-completion, cookiecutter, jinja2-time, molecule
-jmespath==0.9.5           # via openstacksdk
-jsonpatch==1.25           # via openstacksdk
-jsonpointer==2.0          # via jsonpatch
-keystoneauth1==3.18.0     # via openstacksdk
 markupsafe==1.1.1         # via jinja2
 mccabe==0.6.1             # via flake8
 mock==3.0.5               # via molecule
-molecule[docker,lint,test]==3.0.2  # via -r requirements.in
+molecule[docker,lint,test]==3.0.3  # via -r requirements.in
 monotonic==1.5            # via fasteners
-more-itertools==8.2.0     # via pytest
-munch==2.5.0              # via openstacksdk
-netifaces==0.10.9         # via openstacksdk
+more-itertools==8.2.0     # via pytest, pytest-plus
 nodeenv==1.3.5            # via pre-commit
-openstacksdk==0.43.0      # via os-client-config, shade
-os-client-config==2.0.0   # via shade
-os-service-types==1.7.0   # via keystoneauth1, openstacksdk
-packaging==20.3           # via pytest, pytest-sugar
+packaging==20.3           # via pytest
 paramiko==2.7.1           # via molecule
 pathspec==0.7.0           # via yamllint
-pbr==5.4.4                # via keystoneauth1, openstacksdk, os-service-types, shade, stevedore
 pexpect==4.8.0            # via molecule
 pluggy==0.13.1            # via molecule, pytest
 poyo==0.5.0               # via cookiecutter
-pre-commit==1.21.0        # via molecule
+pre-commit==2.2.0         # via molecule
 ptyprocess==0.6.0         # via pexpect
 py==1.8.1                 # via pytest
 pycodestyle==2.5.0        # via flake8
 pycparser==2.20           # via cffi
 pyflakes==2.1.1           # via flake8
 pynacl==1.3.0             # via paramiko
-pyparsing==2.4.6          # via packaging
+pyparsing==2.4.7          # via packaging
 pytest-cov==2.8.1         # via molecule
 pytest-forked==1.1.3      # via pytest-xdist
 pytest-helpers-namespace==2019.1.8  # via molecule
-pytest-html==1.22.1       # via -r requirements.in, molecule
+pytest-html==2.1.1        # via molecule
 pytest-metadata==1.8.0    # via pytest-html
 pytest-mock==1.13.0       # via molecule
-pytest-sugar==0.9.2       # via molecule
+pytest-plus==0.2          # via molecule
 pytest-verbose-parametrize==1.7.0  # via molecule
 pytest-xdist==1.31.0      # via molecule
-pytest==4.6.9             # via molecule, pytest-cov, pytest-forked, pytest-helpers-namespace, pytest-html, pytest-metadata, pytest-mock, pytest-sugar, pytest-verbose-parametrize, pytest-xdist, testinfra
+pytest==5.4.1             # via molecule, pytest-cov, pytest-forked, pytest-helpers-namespace, pytest-html, pytest-metadata, pytest-mock, pytest-plus, pytest-verbose-parametrize, pytest-xdist, testinfra
 python-dateutil==2.8.1    # via arrow
 python-gilt==1.2.3        # via molecule
-pyyaml==5.3.1             # via ansible, ansible-lint, aspy.yaml, molecule, openstacksdk, pre-commit, python-gilt, yamllint
-requests==2.23.0          # via cookiecutter, docker, keystoneauth1
-requestsexceptions==1.4.0  # via openstacksdk
+pyyaml==5.3.1             # via ansible, ansible-lint, molecule, pre-commit, python-gilt, yamllint
+requests==2.23.0          # via cookiecutter, docker
 ruamel.yaml.clib==0.2.0   # via ruamel.yaml
 ruamel.yaml==0.16.10      # via ansible-lint
+selinux==0.2.1            # via molecule
 sh==1.12.14               # via molecule, python-gilt
-shade==1.33.0             # via molecule
 shellingham==1.3.2        # via click-completion
-six==1.14.0               # via ansi2html, ansible-lint, bcrypt, click-completion, cryptography, docker, fasteners, keystoneauth1, mock, molecule, munch, openstacksdk, packaging, pre-commit, pynacl, pytest, pytest-verbose-parametrize, pytest-xdist, python-dateutil, stevedore, virtualenv, websocket-client
-stevedore==1.32.0         # via keystoneauth1
-tabulate==0.8.6           # via molecule
-termcolor==1.1.0          # via pytest-sugar
+six==1.14.0               # via ansi2html, ansible-lint, bcrypt, click-completion, cryptography, docker, fasteners, mock, packaging, pynacl, pytest-verbose-parametrize, pytest-xdist, python-dateutil, virtualenv, websocket-client
+tabulate==0.8.7           # via molecule
 testinfra==5.0.0          # via molecule
 toml==0.10.0              # via pre-commit
 tree-format==0.1.2        # via molecule
 urllib3==1.25.8           # via requests
-virtualenv==20.0.13       # via pre-commit
-wcwidth==0.1.8            # via pytest
+virtualenv==20.0.16       # via pre-commit
+wcwidth==0.1.9            # via pytest
 websocket-client==0.57.0  # via docker
 whichcraft==0.6.1         # via cookiecutter
-yamllint==1.20.0          # via molecule
+yamllint==1.21.0          # via molecule
 zipp==3.1.0               # via importlib-metadata, importlib-resources
 
 # The following packages are considered to be unsafe in a requirements file:
