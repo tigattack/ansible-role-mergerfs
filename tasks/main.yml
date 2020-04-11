@@ -11,13 +11,13 @@
     state: present
   tags:
     - mergerfs
-    - mergerfs-install
+    - mergerfs_install
 
 - name: Include install tasks
   include_tasks: install_from_{{ mergerfs_install_mode }}.yml
   tags:
     - mergerfs
-    - mergerfs-install
+    - mergerfs_install
 
 - name: Mount mergerfs filesystems
   become: True
@@ -30,4 +30,4 @@
   loop: "{{ mergerfs_mounts }}"
   tags:
     - mergerfs
-    - mergerfs-mount
+    - mergerfs_mount
