@@ -1,15 +1,23 @@
 ---
 - name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - mergerfs
 
 - name: Install mergerfs prerequisites
   become: True
   package:
     name: "{{ mergerfs_prerequisites }}"
     state: present
+  tags:
+    - mergerfs
+    - mergerfs-install
 
 - name: Include install tasks
   include_tasks: install_from_{{ mergerfs_install_mode }}.yml
+  tags:
+    - mergerfs
+    - mergerfs-install
 
 - name: Mount mergerfs filesystems
   become: True
@@ -20,3 +28,6 @@
     opts: "{{ item.options | default('defaults') }}"
     state: "{{ item.state | default('mounted') }}"
   loop: "{{ mergerfs_mounts }}"
+  tags:
+    - mergerfs
+    - mergerfs-mount
