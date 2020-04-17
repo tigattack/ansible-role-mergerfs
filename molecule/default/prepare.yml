@@ -2,7 +2,7 @@
 - name: Prepare
   hosts: all
   tasks:
-    - name: "Create branches directories"
+    - name: Create directories
       become: yes
       file:
         path: "{{ item }}"
@@ -11,7 +11,7 @@
         - /mnt/data1
         - /mnt/data2
 
-    - name: "Create data files"
+    - name: Create data files
       become: yes
       copy:
         content: "{{ item.content }}\n"
