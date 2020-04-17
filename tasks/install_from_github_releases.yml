@@ -3,9 +3,9 @@
 # it has rate limits which are hard to avoid in CI (we need a token, authenticate
 # with the API, etc.). Instead, we browse the latest release url which redirects
 # to the release page, where we can find the version number in the URL.
-- become: False
+- become: no
   delegate_to: localhost
-  run_once: True
+  run_once: yes
   block:
   - name: Get latest release information from GitHub
     uri:
@@ -21,28 +21,28 @@
     pkg_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
 
 - name: Install xz-utils package for .deb package installation
-  become: True
+  become: yes
   apt:
     name: xz-utils
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with apt
-  become: True
+  become: yes
   apt:
     deb: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
-  become: True
+  become: yes
   yum:
     name: "{{ pkg_url }}"
     state: present
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
-  become: True
+  become: yes
   dnf:
     name: "{{ pkg_url }}"
     state: present

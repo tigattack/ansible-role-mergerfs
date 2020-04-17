@@ -1,6 +1,6 @@
 ---
 - name: Install mergerfs package with package manager
-  become: True
+  become: yes
   package:
     name: mergerfs
     state: present
