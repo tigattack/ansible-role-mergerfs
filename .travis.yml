@@ -17,6 +17,8 @@ env:
   - INSTALL_MODE=package_manager DISTRIB=debian10
   - INSTALL_MODE=github_releases DISTRIB=debian9
   - INSTALL_MODE=github_releases DISTRIB=debian8
+install:
+  - pip install -r requirements.in
 script:
   - molecule --version
   - molecule test
