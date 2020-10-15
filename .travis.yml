@@ -5,16 +5,19 @@ python:
 services:
   - docker
 env:
+  - INSTALL_MODE=github_releases DISTRIB=centos8
   - INSTALL_MODE=github_releases DISTRIB=centos7
   - INSTALL_MODE=github_releases DISTRIB=centos6
+  - INSTALL_MODE=github_releases DISTRIB=fedora32
   - INSTALL_MODE=github_releases DISTRIB=fedora31
   - INSTALL_MODE=github_releases DISTRIB=fedora30
-  - INSTALL_MODE=github_releases DISTRIB=fedora29
+  - INSTALL_MODE=github_releases DISTRIB=ubuntu2004
+  - INSTALL_MODE=package_manager DISTRIB=ubuntu2004
   - INSTALL_MODE=github_releases DISTRIB=ubuntu1804
-  - INSTALL_MODE=package_manager DISTRIB=ubuntu1804
   - INSTALL_MODE=github_releases DISTRIB=ubuntu1604
+  - INSTALL_MODE=github_releases DISTRIB=debian11
+  - INSTALL_MODE=package_manager DISTRIB=debian11
   - INSTALL_MODE=github_releases DISTRIB=debian10
-  - INSTALL_MODE=package_manager DISTRIB=debian10
   - INSTALL_MODE=github_releases DISTRIB=debian9
   - INSTALL_MODE=github_releases DISTRIB=debian8
 install:
