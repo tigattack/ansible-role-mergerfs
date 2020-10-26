@@ -29,8 +29,6 @@ env:
     INSTALL_MODE: github_releases
   - IMAGE: geerlingguy/docker-debian9-ansible
     INSTALL_MODE: github_releases
-  - IMAGE: geerlingguy/docker-debian8-ansible
-    INSTALL_MODE: github_releases
 install:
   - pip install -I -r requirements.in
 script:
