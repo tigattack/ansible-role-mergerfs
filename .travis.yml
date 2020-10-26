@@ -5,22 +5,25 @@ python:
 services:
   - docker
 env:
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-centos8-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-centos7-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-centos6-ansible
-  #- INSTALL_MODE=github_releases IMAGE=cisagov/docker-fedora33-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora32-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora31-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora30-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu2004-ansible
-  - INSTALL_MODE=package_manager IMAGE=geerlingguy/docker-ubuntu2004-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu1804-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu1604-ansible
-  - INSTALL_MODE=github_releases IMAGE=cisagov/docker-debian11-ansible
-  - INSTALL_MODE=package_manager IMAGE=cisagov/docker-debian11-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian10-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian9-ansible
-  - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian8-ansible
+  - INSTALL_MODE: github_releases
+    IMAGE: geerlingguy/docker-centos8-ansible
+  - INSTALL_MODE: github_releases
+    IMAGE: geerlingguy/docker-centos7-ansible
+  # - INSTALL_MODE=github_releases
+  #   IMAGE=geerlingguy/docker-centos6-ansible
+  # #- INSTALL_MODE=github_releases IMAGE=cisagov/docker-fedora33-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora32-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora31-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-fedora30-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu2004-ansible
+  # - INSTALL_MODE=package_manager IMAGE=geerlingguy/docker-ubuntu2004-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu1804-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-ubuntu1604-ansible
+  # - INSTALL_MODE=github_releases IMAGE=cisagov/docker-debian11-ansible
+  # - INSTALL_MODE=package_manager IMAGE=cisagov/docker-debian11-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian10-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian9-ansible
+  # - INSTALL_MODE=github_releases IMAGE=geerlingguy/docker-debian8-ansible
 install:
   - pip install -I -r requirements.in
 script:
