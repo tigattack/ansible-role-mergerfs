@@ -39,6 +39,7 @@
   yum:
     name: "{{ pkg_url }}"
     state: present
+    disable_gpg_check: yes  # the package is not signed
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
@@ -46,4 +47,5 @@
   dnf:
     name: "{{ pkg_url }}"
     state: present
+    disable_gpg_check: yes  # the package is not signed
   when: ansible_pkg_mgr == 'dnf'
