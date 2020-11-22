@@ -1,2 +1,4 @@
-molecule[test,lint,docker]
-testresources
+molecule-docker
+ansible
+ansible-lint
+flake8
