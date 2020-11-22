@@ -1,4 +1,1 @@
-molecule-docker
-ansible
-ansible-lint
-flake8
+molecule[ansible,docker,test,lint]
