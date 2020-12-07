@@ -9,9 +9,9 @@
         options: allow_other,use_ino
   pre_tasks:
     - name: update apt cache
-      become: True
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
         cache_valid_time: 3600
       when: ansible_pkg_mgr == 'apt'
   roles:

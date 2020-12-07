@@ -3,9 +3,9 @@
 # it has rate limits which are hard to avoid in CI (we need a token, authenticate
 # with the API, etc.). Instead, we browse the latest release url which redirects
 # to the release page, where we can find the version number in the URL.
-- become: no
+- become: false
   delegate_to: localhost
-  run_once: yes
+  run_once: true
   block:
   - name: Get latest release information from GitHub
     uri:
@@ -18,34 +18,35 @@
 
 - name: Determine package download url
   set_fact:
-    pkg_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
+    mergerfs_package_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/\
+      {{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
 
 - name: Install xz-utils package for .deb package installation
-  become: yes
+  become: true
   apt:
     name: xz-utils
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with apt
-  become: yes
+  become: true
   apt:
-    deb: "{{ pkg_url }}"
+    deb: "{{ mergerfs_package_url }}"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
-  become: yes
+  become: true
   yum:
-    name: "{{ pkg_url }}"
+    name: "{{ mergerfs_package_url }}"
     state: present
-    disable_gpg_check: yes  # the package is not signed
+    disable_gpg_check: true  # the package is not signed
   when: ansible_pkg_mgr == 'yum'
 
 - name: Install mergerfs package with dnf
-  become: yes
+  become: true
   dnf:
-    name: "{{ pkg_url }}"
+    name: "{{ mergerfs_package_url }}"
     state: present
-    disable_gpg_check: yes  # the package is not signed
+    disable_gpg_check: true  # the package is not signed
   when: ansible_pkg_mgr == 'dnf'

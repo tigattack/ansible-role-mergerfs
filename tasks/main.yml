@@ -5,7 +5,7 @@
     - mergerfs
 
 - name: Install mergerfs prerequisites
-  become: yes
+  become: true
   package:
     name: "{{ mergerfs_prerequisites }}"
     state: present
@@ -20,7 +20,7 @@
     - mergerfs_install
 
 - name: Mount mergerfs filesystems
-  become: yes
+  become: true
   mount:
     fstype: fuse.mergerfs
     src: "{{ ':'.join(item.branches | mandatory) }}"
