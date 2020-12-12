@@ -3,7 +3,7 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint: yamllint . && ansible-lint . && flake8
+lint: yamllint -s . && ansible-lint . && flake8
 platforms:
   - name: instance
     image: ${IMAGE:-geerlingguy/docker-ubuntu2004-ansible}
