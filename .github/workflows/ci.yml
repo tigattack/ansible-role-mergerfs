@@ -16,8 +16,6 @@ jobs:
             mode: github_releases
           - image: geerlingguy/docker-centos7-ansible
             mode: github_releases
-          - image: geerlingguy/docker-centos6-ansible
-            mode: github_releases
           - image: geerlingguy/docker-fedora32-ansible
             mode: github_releases
           - image: geerlingguy/docker-fedora31-ansible
