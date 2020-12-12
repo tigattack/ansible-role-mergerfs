@@ -4,7 +4,7 @@
   tags:
     - mergerfs
 
-- name: Update APT cache
+- name: Update apt cache
   become: true
   apt:
     update_cache: true
