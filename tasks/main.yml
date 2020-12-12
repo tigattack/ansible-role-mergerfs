@@ -4,21 +4,12 @@
   tags:
     - mergerfs
 
-- name: Update apt cache
-  become: true
-  apt:
-    update_cache: true
-    cache_valid_time: 3600
-  when: ansible_pkg_mgr == 'apt'
-  tags:
-    - mergerfs
-    - mergerfs_install
-
 - name: Install mergerfs prerequisites
   become: true
   package:
     name: "{{ mergerfs_prerequisites }}"
     state: present
+    update_cache: true
   tags:
     - mergerfs
     - mergerfs_install

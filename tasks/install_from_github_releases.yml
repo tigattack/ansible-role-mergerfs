@@ -26,6 +26,7 @@
   apt:
     name: xz-utils
     state: present
+    update_cache: true
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with apt
@@ -33,6 +34,7 @@
   apt:
     deb: "{{ mergerfs_package_url }}"
     state: present
+    update_cache: true
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install mergerfs package with yum
