@@ -1,8 +1,8 @@
 Ansible Role: mergerfs
 ======================
 
-[![Ansible Galaxy][galaxy_image]][galaxy_link]
-[![Build Status][travis_image]][travis_link]
+[![Build Status][build_badge]][build_link]
+[![Ansible Galaxy][galaxy_badge]][galaxy_link]
 
 Install and configure Mergerfs — A featureful union filesystem.
 
@@ -48,7 +48,7 @@ Author Information
 This role was created in 2020 by [Sylvain Prat](https://github.com/sprat).
 
 
-[travis_image]:  https://travis-ci.com/sprat/ansible-role-mergerfs.svg?branch=master
-[travis_link]:   https://travis-ci.com/sprat/ansible-role-mergerfs
-[galaxy_image]:  https://img.shields.io/badge/galaxy-sprat.mergerfs-660198.svg?style=flat
-[galaxy_link]:   https://galaxy.ansible.com/sprat/mergerfs
+[build_badge]:  https://img.shields.io/github/workflow/status/sprat/ansible-role-mergerfs/CI
+[build_link]:   https://github.com/sprat/ansible-role-mergerfs/actions?query=workflow:CI
+[galaxy_badge]: https://img.shields.io/ansible/role/47517
+[galaxy_link]:  https://galaxy.ansible.com/sprat/mergerfs
