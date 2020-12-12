@@ -4,6 +4,15 @@
   tags:
     - mergerfs
 
+- name: Update APT cache
+  become: true
+  apt:
+    update_cache: true
+  when: ansible_pkg_mgr == 'apt'
+  tags:
+    - mergerfs
+    - mergerfs_install
+
 - name: Install mergerfs prerequisites
   become: true
   package:
