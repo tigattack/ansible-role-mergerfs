@@ -26,6 +26,8 @@ Example Playbook
 
 ```yaml
 - hosts: server
+  roles:
+    - role: sprat.mergerfs
   vars:
     mergerfs_mounts:
       - path: /mnt/data
@@ -33,8 +35,6 @@ Example Playbook
           - /mnt/data1
           - /mnt/data2
         options: allow_other,use_ino
-  roles:
-    - role: sprat.mergerfs
 ```
 
 License
