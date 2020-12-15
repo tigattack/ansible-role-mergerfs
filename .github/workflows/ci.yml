@@ -1,6 +1,6 @@
 ---
 name: CI
-"on":
+on:  # yamllint disable-line rule:truthy
   push:
   schedule:
     - cron: "0 5 * * 1"
