@@ -198,8 +198,6 @@ rich==9.10.0
     #   ansible-lint
     #   enrich
     #   molecule
-ruamel.yaml.clib==0.2.2
-    # via ruamel.yaml
 ruamel.yaml==0.16.12
     # via ansible-lint
 selinux==0.2.1
@@ -229,7 +227,7 @@ toml==0.10.2
     #   pytest
 typing-extensions==3.7.4.3
     # via rich
-urllib3==1.26.3
+urllib3==1.26.4
     # via requests
 virtualenv==20.4.2
     # via pre-commit
