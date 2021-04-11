@@ -2,6 +2,7 @@
 galaxy_info:
   author: Sylvain Prat
   role_name: mergerfs
+  namespace: sprat
   description: Install and configure Mergerfs — A featureful union filesystem
   license: MIT
   company: none
