@@ -6,7 +6,7 @@ galaxy_info:
   description: Install and configure Mergerfs — A featureful union filesystem
   license: MIT
   company: none
-  min_ansible_version: 2.3
+  min_ansible_version: "2.9"
   platforms:
     - name: Ubuntu
       versions:

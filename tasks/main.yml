@@ -1,34 +1,28 @@
 ---
+
 - name: Include OS-specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
-  tags:
-    - mergerfs
+  ansible.builtin.include_vars:
+    file: "{{ ansible_os_family }}.yml"
+  tags: mergerfs
 
 - name: Install mergerfs prerequisites
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ mergerfs_prerequisites }}"
     state: present
-    update_cache: true
-  tags:
-    - mergerfs
-    - mergerfs_install
+  tags: [mergerfs, mergerfs_install]
 
 - name: Include install tasks
-  import_tasks: install_from_{{ mergerfs_install_mode }}.yml
-  tags:
-    - mergerfs
-    - mergerfs_install
+  ansible.builtin.import_tasks: install_from_{{ mergerfs_install_mode }}.yml
+  tags: [mergerfs, mergerfs_install]
 
 - name: Mount mergerfs filesystems
-  become: true
-  mount:
+  ansible.posix.mount:
     fstype: fuse.mergerfs
     src: "{{ ':'.join(item.branches | mandatory) }}"
     path: "{{ item.path | mandatory }}"
     opts: "{{ item.options | default('defaults') }}"
-    state: "{{ item.state | default('mounted') }}"
+    state: "{{ item.state | default('mounted') }}"  # noqa args[module]
   loop: "{{ mergerfs_mounts }}"
-  tags:
-    - mergerfs
-    - mergerfs_mount
+  become: true
+  tags: [mergerfs, mergerfs_install]
