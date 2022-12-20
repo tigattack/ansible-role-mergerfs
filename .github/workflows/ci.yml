@@ -4,6 +4,7 @@ on:  # yamllint disable-line rule:truthy
   push:
   schedule:
     - cron: "0 5 * * 1"
+  workflow_dispatch:
 
 jobs:
   # test the role
