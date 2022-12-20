@@ -14,6 +14,7 @@
       ansible.builtin.uri:
         url: "{{ mergerfs_github_releases_url }}/latest"
       register: mergerfs_github_release_page
+      check_mode: false
 
     - name: Set latest mergerfs version fact
       ansible.builtin.set_fact:
