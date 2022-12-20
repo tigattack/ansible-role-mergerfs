@@ -30,6 +30,10 @@ jobs:
             mode: github_releases
           - image: geerlingguy/docker-ubuntu1604-ansible
             mode: github_releases
+          - image: geerlingguy/docker-debian11-ansible
+            mode: package_manager
+          - image: geerlingguy/docker-debian11-ansible
+            mode: github_releases
           - image: geerlingguy/docker-debian10-ansible
             mode: package_manager
           - image: geerlingguy/docker-debian10-ansible
