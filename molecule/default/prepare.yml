@@ -3,17 +3,16 @@
   hosts: all
   tasks:
     - name: Create directories
-      become: true
-      file:
+      ansible.builtin.file:  # noqa risky-file-permissions
         path: "{{ item }}"
         state: directory
       loop:
         - /mnt/data1
         - /mnt/data2
+      become: true
 
     - name: Create data files
-      become: true
-      copy:
+      ansible.builtin.copy:  # noqa risky-file-permissions
         content: "{{ item.content }}\n"
         dest: "{{ item.path }}"
       loop:
@@ -23,3 +22,9 @@
           content: file2
         - path: /mnt/data2/file3.txt
           content: file3
+      become: true
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_pkg_mgr == 'apt'
