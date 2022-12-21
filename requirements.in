@@ -1,1 +1,2 @@
 molecule[docker,test,lint]
+ansible-lint==6.10.0
