@@ -13,33 +13,29 @@ jobs:
     strategy:
       matrix:
         config:
-          - image: geerlingguy/docker-centos8-ansible
+          - distro: ubuntu2204
             mode: github_releases
-          - image: geerlingguy/docker-centos7-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-fedora32-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-fedora31-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-fedora30-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-ubuntu2004-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-ubuntu2004-ansible
+          - distro: ubuntu2204
             mode: package_manager
-          - image: geerlingguy/docker-ubuntu1804-ansible
+          - distro: ubuntu2004
             mode: github_releases
-          - image: geerlingguy/docker-ubuntu1604-ansible
-            mode: github_releases
-          - image: geerlingguy/docker-debian11-ansible
+          - distro: ubuntu2004
             mode: package_manager
-          - image: geerlingguy/docker-debian11-ansible
+          - distro: ubuntu1804
             mode: github_releases
-          - image: geerlingguy/docker-debian10-ansible
+          - distro: ubuntu1804
             mode: package_manager
-          - image: geerlingguy/docker-debian10-ansible
+          - distro: debian11
             mode: github_releases
-          - image: geerlingguy/docker-debian9-ansible
+          - distro: debian11
+            mode: package_manager
+          - distro: debian10
+            mode: github_releases
+          - distro: debian10
+            mode: package_manager
+          - distro: rockylinux8
+            mode: github_releases
+          - distro: fedora34
             mode: github_releases
 
     steps:
@@ -58,7 +54,7 @@ jobs:
 
       - name: Run molecule tests
         env:
-          IMAGE: ${{ matrix.config.image }}
+          MOLECULE_DISTRO: ${{ matrix.config.distro }}
           INSTALL_MODE: ${{ matrix.config.mode }}
         run: molecule -v test
 

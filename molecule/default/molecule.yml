@@ -6,7 +6,7 @@ driver:
 lint: yamllint -s . && ansible-lint . && flake8
 platforms:
   - name: instance
-    image: ${IMAGE:-geerlingguy/docker-ubuntu2004-ansible}
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian11}-ansible:latest"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true

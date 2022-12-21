@@ -10,17 +10,23 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - all
+        - bionic
+        - focal
+        - jammy
     - name: Debian
       versions:
-        - all
+        - buster
+        - bullseye
     - name: Fedora
       versions:
         - all
     - name: EL
       versions:
-        - all
+        - 7
+        - 8
   galaxy_tags:
+    - system
+    - server
     - mergerfs
     - union
     - filesystem
