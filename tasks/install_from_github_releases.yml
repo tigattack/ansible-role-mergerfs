@@ -38,7 +38,6 @@
   ansible.builtin.apt:
     deb: "{{ mergerfs_package_url }}"
     state: present
-    update_cache: true
   become: true
   when: ansible_pkg_mgr == 'apt'
 
