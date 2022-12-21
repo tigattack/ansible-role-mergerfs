@@ -13,7 +13,8 @@
   tags: [mergerfs, mergerfs_install]
 
 - name: Include install tasks
-  ansible.builtin.import_tasks: install_from_{{ mergerfs_install_mode }}.yml
+  ansible.builtin.include_tasks:
+    file: install_from_{{ mergerfs_install_mode }}.yml
   tags: [mergerfs, mergerfs_install]
 
 - name: Mount mergerfs filesystems
