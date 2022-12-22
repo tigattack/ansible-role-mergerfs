@@ -2,12 +2,14 @@
 name: CI
 on:  # yamllint disable-line rule:truthy
   push:
+    tags-ignore:
+      - '**'
   schedule:
     - cron: "0 5 * * 1"
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  # test the role
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -57,13 +59,3 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.config.distro }}
           INSTALL_MODE: ${{ matrix.config.mode }}
         run: molecule -v test
-
-  # publish the role on ansible galaxy
-  publish:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Publish
-        uses: robertdebock/galaxy-action@1.2.1
-        with:
-          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
