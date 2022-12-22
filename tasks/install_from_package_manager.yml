@@ -1,7 +1,14 @@
 ---
 
-- name: Install mergerfs package with package manager
-  ansible.builtin.package:
-    name: mergerfs
+- name: Install mergerfs package with apt
+  ansible.builtin.apt:
+    name: mergerfs{{ '=' + mergerfs_version if mergerfs_version != 'latest' }}
     state: present
   become: true
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Install mode warning
+  ansible.builtin.debug:
+    msg: "You've chosen the {{ mergerfs_install_mode }} install mode, but mergerfs isn't available
+      in your distribution's package repositories.\nPlease use the github_releases install mode."
+    when: ansible_pkg_mgr in ['yum', 'dnf']
