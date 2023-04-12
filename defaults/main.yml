@@ -21,3 +21,6 @@ mergerfs_mounts: []
 
 # Url of the mergerfs GitHub releases page
 mergerfs_github_releases_url: https://github.com/trapexit/mergerfs/releases
+
+# Whether the role should install prerequisites for you.
+mergerfs_install_prerequisites: true

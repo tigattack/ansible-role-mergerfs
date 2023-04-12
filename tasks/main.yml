@@ -11,6 +11,7 @@
     name: "{{ mergerfs_prerequisites }}"
     state: present
   tags: [mergerfs, mergerfs_install]
+  when: mergerfs_install_prerequisites
 
 - name: Include install tasks
   ansible.builtin.include_tasks:

@@ -49,6 +49,12 @@ Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/tr
 
 URL of the mergerfs GitHub releases page.
 
+### `mergerfs_install_prerequisites`
+
+Default: `true`
+
+Whether the role should install [prerequisites](defaults/main.yml) for you. If in doubt, leave on default.
+
 ## Dependencies
 
 None.
