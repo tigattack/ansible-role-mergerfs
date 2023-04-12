@@ -1,28 +1,59 @@
-Ansible Role: mergerfs
-======================
+# Ansible Role: mergerfs
 
 [![Build Status][build_badge]][build_link]
 [![Ansible Galaxy][galaxy_badge]][galaxy_link]
 
 Install and configure Mergerfs — A featureful union filesystem.
 
-Requirements
-------------
+## Requirements
 
 None.
 
-Role Variables
---------------
+## Role Variables
 
-See [defaults/main.yml](defaults/main.yml).
+### `mergerfs_install_mode`
 
-Dependencies
-------------
+Default: `github_releases`
+
+Defines where to download and install the package from:
+ - `github_releases`: install from the mergerfs GitHub releases.
+ - `package_manager`: install from the Linux distribution package manager.  
+   Note that the mergerfs package does not exists in all distributions, and may be out of date in others, so this will not work under some conditions.
+
+### `mergerfs_version`
+
+Default: `latest`
+
+Version to install:
+* `latest`
+* Specific version number, e.g. `2.28.2`
+
+> **Note**
+> This setting only applies when `mergerfs_install_mode` is `github_releases` (default).
+
+### `mergerfs_mounts`
+
+Mergerfs mountpoints to create. For example:
+```
+mergerfs_mounts:
+  - path: /mnt/storage
+    branches:
+      - /mnt/data*
+      - /mnt/other
+    options: allow_other,use_ino
+```
+
+### `mergerfs_github_releases_url`
+
+Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
+
+URL of the mergerfs GitHub releases page.
+
+## Dependencies
 
 None.
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yaml
 - hosts: server
@@ -37,13 +68,11 @@ Example Playbook
         options: allow_other,use_ino
 ```
 
-License
--------
+## License
 
 MIT
 
-Author Information
-------------------
+## Author Information
 
 This role was created in 2020 by [Sylvain Prat](https://github.com/sprat).
 
