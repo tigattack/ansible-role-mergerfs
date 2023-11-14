@@ -43,7 +43,7 @@ mergerfs_mounts:
     options: allow_other,use_ino
 ```
 
-### `mergerfs_unmount_unlisted`
+### `mergerfs_remove_other_mergerfs_mounts`
 
 Default: `false`
 

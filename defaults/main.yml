@@ -26,4 +26,4 @@ mergerfs_github_releases_url: https://github.com/trapexit/mergerfs/releases
 mergerfs_install_prerequisites: true
 
 # Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted
-mergerfs_unmount_unlisted: false
+mergerfs_remove_other_mergerfs_mounts: false
