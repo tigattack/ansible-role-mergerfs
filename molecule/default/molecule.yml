@@ -11,6 +11,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
+
 provisioner:
   name: ansible
   inventory:
@@ -18,4 +19,6 @@ provisioner:
       all:
         mergerfs_install_mode: ${INSTALL_MODE:-github_releases}
 verifier:
+  env:
+    PYTEST_CHECK_TEST_ID_REGEX: "0"
   name: testinfra
