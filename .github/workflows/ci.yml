@@ -23,21 +23,19 @@ jobs:
             mode: github_releases
           - distro: ubuntu2004
             mode: package_manager
-          - distro: ubuntu1804
+          - distro: debian12
             mode: github_releases
-          - distro: ubuntu1804
+          - distro: debian12
             mode: package_manager
           - distro: debian11
             mode: github_releases
           - distro: debian11
-            mode: package_manager
-          - distro: debian10
-            mode: github_releases
-          - distro: debian10
             mode: package_manager
           - distro: rockylinux8
             mode: github_releases
-          - distro: fedora34
+          - distro: rockylinux9
+            mode: github_releases
+          - distro: fedora39
             mode: github_releases
 
     steps:
