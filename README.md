@@ -3,7 +3,9 @@
 [![Build Status][build_badge]][build_link]
 [![Ansible Galaxy][galaxy_badge]][galaxy_link]
 
-Install and configure Mergerfs — A featureful union filesystem.
+Install [MergerFS](https://github.com/trapexit/mergerfs) and manage mountpoints.
+
+Install the role: `ansible-galaxy role install tigattack.mergerfs`
 
 ## Requirements
 
@@ -16,9 +18,9 @@ None.
 Default: `github_releases`
 
 Defines where to download and install the package from:
- - `github_releases`: install from the mergerfs GitHub releases.
+ - `github_releases`: install from the MergerFS GitHub releases.
  - `package_manager`: install from the Linux distribution package manager.  
-   Note that the mergerfs package does not exists in all distributions, and may be out of date in others, so this will not work under some conditions.
+   Note that the MergerFS package does not exists in all distributions, and may be out of date in others, so this will not work under some conditions.
 
 ### `mergerfs_version`
 
@@ -33,8 +35,9 @@ Version to install:
 
 ### `mergerfs_mounts`
 
-Mergerfs mountpoints to create. For example:
-```
+MergerFS mountpoints to create. For example:
+
+```yml
 mergerfs_mounts:
   - path: /mnt/storage
     branches:
@@ -47,7 +50,7 @@ mergerfs_mounts:
 
 Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
 
-URL of the mergerfs GitHub releases page.
+URL of the MergerFS GitHub releases page.
 
 ### `mergerfs_install_prerequisites`
 
@@ -61,7 +64,7 @@ None.
 
 ## Example Playbook
 
-```yaml
+```yml
 - hosts: server
   roles:
     - role: tigattack.mergerfs
@@ -85,7 +88,7 @@ This role was created in 2020 by [Sylvain Prat](https://github.com/sprat).
 After Sylvain archived the repository some time ago, I, [tigattack](https://github.com/tigattack), forked it in late 2022 to make some quality of life improvements and keep it maintained.
 
 
-[build_badge]:  https://img.shields.io/github/actions/workflow/status/tigattack/ansible-role-mergerfs/ci.yml?branch=main
+[build_badge]:  https://img.shields.io/github/actions/workflow/status/tigattack/ansible-role-mergerfs/ci.yml?branch=main&label=Molecule%20test
 [build_link]:   https://github.com/tigattack/ansible-role-mergerfs/actions?query=workflow:CI
-[galaxy_badge]: https://img.shields.io/ansible/role/61203
+[galaxy_badge]: https://img.shields.io/ansible/role/d/tigattack/mergerfs
 [galaxy_link]:  https://galaxy.ansible.com/tigattack/mergerfs
