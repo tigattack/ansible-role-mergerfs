@@ -18,4 +18,6 @@ provisioner:
       all:
         mergerfs_install_mode: ${INSTALL_MODE:-github_releases}
 verifier:
+  env:
+    PYTEST_CHECK_TEST_ID_REGEX: "0"
   name: testinfra
