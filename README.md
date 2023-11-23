@@ -46,6 +46,12 @@ mergerfs_mounts:
     options: allow_other,use_ino
 ```
 
+### `mergerfs_remove_undefined_mounts`
+
+Default: `false`
+
+Remove any existing mergerfs mounts that are not listed in `mergerfs_mounts`
+
 ### `mergerfs_github_releases_url`
 
 Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
