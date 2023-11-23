@@ -42,4 +42,4 @@
         state: absent
       loop: "{{ existing_mergerfs_mounts.stdout_lines }}"
       when: item not in mergerfs_mounts | map(attribute='path') | list
-  when: mergerfs_remove_other_mergerfs_mounts
+  when: mergerfs_remove_undefined_mounts
