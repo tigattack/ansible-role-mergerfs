@@ -1,4 +1,4 @@
-molecule[test]==24.7.0
+molecule[test]==24.9.0
 molecule-plugins[docker]==23.5.3
 pytest-testinfra
 # https://www.reddit.com/r/ansible/comments/1drwejk/python_interpreter_issue_on_oracle_linux/lay8n4g/
