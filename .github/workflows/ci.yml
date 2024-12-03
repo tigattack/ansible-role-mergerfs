@@ -53,6 +53,8 @@ jobs:
 
       - name: Run molecule tests
         env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.config.distro }}
           INSTALL_MODE: ${{ matrix.config.mode }}
         run: molecule -v test
