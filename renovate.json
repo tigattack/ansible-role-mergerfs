@@ -11,6 +11,10 @@
       "automerge": true
     },
     {
+      "matchPackageNames": ["/ansible-lint/"],
+      "groupName": "ansible-lint"
+    },
+    {
       "matchManagers": ["pip_requirements"],
       "matchUpdateTypes": ["patch"],
       "automerge": true
