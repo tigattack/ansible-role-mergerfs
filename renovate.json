@@ -1,19 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":configMigration",
+    "github>tigattack/repo_utils:renovate_ansible_preset.json5"
   ],
   "packageRules": [
-    {
-      "matchManagers": ["ansible-galaxy", "github-actions"],
-      "matchPackageNames": ["ansible-lint"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
-    },
-    {
-      "matchPackageNames": ["/ansible-lint/"],
-      "groupName": "ansible-lint"
-    },
     {
       "matchManagers": ["pip_requirements"],
       "matchUpdateTypes": ["patch"],
