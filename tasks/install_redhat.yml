@@ -1,0 +1,8 @@
+---
+
+- name: Install mergerfs package
+  ansible.builtin.dnf:
+    name: "{{ mergerfs_package_url }}"
+    state: present
+    disable_gpg_check: true  # the package is not signed
+  become: true
