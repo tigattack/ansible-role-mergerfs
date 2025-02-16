@@ -1,29 +1,12 @@
 ---
 galaxy_info:
   author: tigattack
-  role_name: mergerfs
   namespace: tigattack
-  description: Install and configure Mergerfs — A featureful union filesystem. Updated fork of sprat.mergerfs.
+  role_name: mergerfs
+  description: Install and configure Mergerfs — A featureful union filesystem.
   license: MIT
   company: none
   min_ansible_version: "2.9"
-  platforms:
-    - name: Ubuntu
-      versions:
-        - bionic
-        - focal
-        - jammy
-    - name: Debian
-      versions:
-        - buster
-        - bullseye
-    - name: Fedora
-      versions:
-        - all
-    - name: EL
-      versions:
-        - 7
-        - 8
   galaxy_tags:
     - system
     - server
@@ -32,5 +15,3 @@ galaxy_info:
     - filesystem
     - disk
     - mount
-
-dependencies: []
