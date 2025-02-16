@@ -31,16 +31,17 @@
   become: true
 
 - name: Unmount unlisted mergerfs filesystems
+  when: mergerfs_remove_undefined_mounts
   block:
     - name: List existing mergerfs filesystems
       # ansible_mounts doesn't list fuse mounts
       ansible.builtin.command: "findmnt -t fuse.mergerfs -o TARGET -n"
       changed_when: false
       register: existing_mergerfs_mounts
+
     - name: Unmount mergerfs filesystems
       ansible.posix.mount:
         path: "{{ item }}"
         state: absent
       loop: "{{ existing_mergerfs_mounts.stdout_lines }}"
       when: item not in mergerfs_mounts | map(attribute='path') | list
-  when: mergerfs_remove_undefined_mounts
