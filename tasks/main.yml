@@ -26,7 +26,7 @@
     src: "{{ ':'.join(item.branches | mandatory) }}"
     path: "{{ item.path | mandatory }}"
     opts: "{{ item.options | default('defaults') }}"
-    state: "{{ item.state | default('mounted') }}"  # noqa args[module]
+    state: "{{ item.state | default('mounted') }}"
   loop: "{{ mergerfs_mounts }}"
   become: true
 
