@@ -8,20 +8,17 @@
 - name: Include OS-specific variables
   ansible.builtin.include_vars:
     file: "{{ ansible_os_family }}.yml"
-  tags: mergerfs
 
 - name: Install mergerfs prerequisites
   become: true
   ansible.builtin.package:
     name: "{{ mergerfs_prerequisites }}"
     state: present
-  tags: [mergerfs, mergerfs_install]
   when: mergerfs_install_prerequisites
 
 - name: Install mergerfs
   ansible.builtin.include_tasks:
     file: install.yml
-  tags: [mergerfs, mergerfs_install]
 
 - name: Mount mergerfs filesystems
   ansible.posix.mount:
@@ -32,7 +29,6 @@
     state: "{{ item.state | default('mounted') }}"  # noqa args[module]
   loop: "{{ mergerfs_mounts }}"
   become: true
-  tags: [mergerfs, mergerfs_install]
 
 - name: Unmount unlisted mergerfs filesystems
   block:
