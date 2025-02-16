@@ -2,8 +2,10 @@
 name: Test
 on:
   push:
+    branches: [main]
     tags-ignore:
       - '**'
+  pull_request:
   schedule:
     - cron: "0 5 * * 1"
   workflow_dispatch:
