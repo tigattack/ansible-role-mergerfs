@@ -9,7 +9,6 @@
       loop:
         - /mnt/data1
         - /mnt/data2
-      become: true
 
     - name: Create data files
       ansible.builtin.copy:  # noqa risky-file-permissions
@@ -22,7 +21,6 @@
           content: file2
         - path: /mnt/data2/file3.txt
           content: file3
-      become: true
 
     - name: Update apt cache
       ansible.builtin.apt:
