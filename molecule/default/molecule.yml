@@ -1,9 +1,10 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
-lint: yamllint -s . && ansible-lint . && flake8
+
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible:latest"
@@ -12,10 +13,11 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
+
 provisioner:
   name: ansible
 
 verifier:
+  name: testinfra
   env:
     PYTEST_CHECK_TEST_ID_REGEX: "0"
-  name: testinfra

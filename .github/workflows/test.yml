@@ -1,6 +1,6 @@
 ---
-name: CI
-on:  # yamllint disable-line rule:truthy
+name: Test
+on:
   push:
     tags-ignore:
       - '**'
@@ -10,35 +10,41 @@ on:  # yamllint disable-line rule:truthy
   workflow_call:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ansible/ansible-lint@v25.1.2
+        with:
+          requirements_file: requirements.yml
+
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         distro:
-          - ubuntu2204
-          - ubuntu2004
-          - debian12
           - debian11
+          - debian12
+          - fedora40
+          - fedora41
           - rockylinux8
           - rockylinux9
-          - fedora39
+          - ubuntu2204
+          - ubuntu2404
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python 3
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
           cache: 'pip'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      - name: Run molecule tests
+      - run: molecule -v test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-        run: molecule -v test
