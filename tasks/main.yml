@@ -1,5 +1,10 @@
 ---
 
+- name: Assert that OS family is supported
+  ansible.builtin.assert:
+    that: ansible_os_family | lower in ['debian', 'redhat']
+    fail_msg: "Unsupported OS family: {{ ansible_os_family }}"
+
 - name: Include OS-specific variables
   ansible.builtin.include_vars:
     file: "{{ ansible_os_family }}.yml"
