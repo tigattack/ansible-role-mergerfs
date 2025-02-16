@@ -13,9 +13,9 @@
   tags: [mergerfs, mergerfs_install]
   when: mergerfs_install_prerequisites
 
-- name: Include install tasks
+- name: Install mergerfs
   ansible.builtin.include_tasks:
-    file: install_from_{{ mergerfs_install_mode }}.yml
+    file: install.yml
   tags: [mergerfs, mergerfs_install]
 
 - name: Mount mergerfs filesystems

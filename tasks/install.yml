@@ -23,36 +23,30 @@
 
     - name: Determine package download url
       ansible.builtin.set_fact:
-        mergerfs_package_url: "{{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/\
-          {{ mergerfs_pkg_prefix }}{{ mergerfs_version }}{{ mergerfs_pkg_suffix }}"
+        mergerfs_package_url: >-
+          {{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{
+          mergerfs_pkg_prefix ~ mergerfs_version ~ mergerfs_pkg_suffix }}
 
-- name: Install xz-utils package for .deb package installation
-  ansible.builtin.apt:
-    name: xz-utils
-    state: present
-    update_cache: true
-  become: true
+- name: Apt install block
   when: ansible_pkg_mgr == 'apt'
+  block:
+    - name: Install xz-utils package for .deb package installation
+      ansible.builtin.apt:
+        name: xz-utils
+        state: present
+        update_cache: true
+      become: true
 
-- name: Install mergerfs package with apt
-  ansible.builtin.apt:
-    deb: "{{ mergerfs_package_url }}"
-    state: present
-  become: true
-  when: ansible_pkg_mgr == 'apt'
+    - name: Install mergerfs package with apt
+      ansible.builtin.apt:
+        deb: "{{ mergerfs_package_url }}"
+        state: present
+      become: true
 
-- name: Install mergerfs package with yum
-  ansible.builtin.yum:
-    name: "{{ mergerfs_package_url }}"
-    state: present
-    disable_gpg_check: true  # the package is not signed
-  become: true
-  when: ansible_pkg_mgr == 'yum'
-
-- name: Install mergerfs package with dnf
+- name: Install mergerfs package with {{ ansible_pkg_mgr }}
   ansible.builtin.dnf:
     name: "{{ mergerfs_package_url }}"
     state: present
     disable_gpg_check: true  # the package is not signed
   become: true
-  when: ansible_pkg_mgr == 'dnf'
+  when: ansible_pkg_mgr in ['dnf', 'yum']

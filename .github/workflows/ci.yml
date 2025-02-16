@@ -14,29 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        config:
-          - distro: ubuntu2204
-            mode: github_releases
-          - distro: ubuntu2204
-            mode: package_manager
-          - distro: ubuntu2004
-            mode: github_releases
-          - distro: ubuntu2004
-            mode: package_manager
-          - distro: debian12
-            mode: github_releases
-          - distro: debian12
-            mode: package_manager
-          - distro: debian11
-            mode: github_releases
-          - distro: debian11
-            mode: package_manager
-          - distro: rockylinux8
-            mode: github_releases
-          - distro: rockylinux9
-            mode: github_releases
-          - distro: fedora39
-            mode: github_releases
+        distro:
+          - ubuntu2204
+          - ubuntu2004
+          - debian12
+          - debian11
+          - rockylinux8
+          - rockylinux9
+          - fedora39
 
     steps:
       - name: Checkout
@@ -55,6 +40,5 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.config.distro }}
-          INSTALL_MODE: ${{ matrix.config.mode }}
+          MOLECULE_DISTRO: ${{ matrix.distro }}
         run: molecule -v test

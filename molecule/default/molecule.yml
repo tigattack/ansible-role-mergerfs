@@ -13,10 +13,7 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
-  inventory:
-    group_vars:
-      all:
-        mergerfs_install_mode: ${INSTALL_MODE:-github_releases}
+
 verifier:
   env:
     PYTEST_CHECK_TEST_ID_REGEX: "0"
