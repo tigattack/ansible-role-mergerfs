@@ -9,13 +9,6 @@
   ansible.builtin.include_vars:
     file: "{{ ansible_os_family }}.yml"
 
-- name: Install mergerfs prerequisites
-  become: true
-  ansible.builtin.package:
-    name: "{{ mergerfs_prerequisites }}"
-    state: present
-  when: mergerfs_install_prerequisites
-
 # Note: we don't use the GitHub API to retrieve the latest version because
 # it has rate limits which are hard to avoid in CI (we need a token, authenticate
 # with the API, etc.). Instead, we browse the latest release url which redirects
