@@ -15,7 +15,7 @@ Install the role: `ansible-galaxy role install tigattack.mergerfs`
 
 ## Requirements
 
-None.
+* `ansible.posix>=1.0.0` collection.
 
 ## Role Variables
 
