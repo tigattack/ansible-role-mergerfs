@@ -28,7 +28,6 @@ jobs:
           - debian12
           - fedora40
           - fedora41
-          - rockylinux8
           - rockylinux9
           - ubuntu2204
           - ubuntu2404
