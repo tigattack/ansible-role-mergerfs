@@ -1,0 +1,35 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure Mergerfs
+    description:
+      - This role will install and configure Mergerfs — A featureful union filesystem.
+      - 'Prerequisites:'
+      - '  - Ansible collectio ansible.posix>=1.0.0'
+    version_added: '2.0.0'
+    author: tigattack
+    options:
+      mergerfs_version:
+        type: str
+        default: latest
+        description: 'Version to install: "latest" version or a specific version number, e.g. "2.28.2"'
+
+      mergerfs_mounts:
+        type: list
+        default: []
+        description: 'Mergerfs mountpoints to create. See README.md for examples.'
+
+      mergerfs_github_releases_url:
+        type: str
+        default: https://github.com/trapexit/mergerfs/releases
+        description: 'URL of the mergerfs GitHub releases page'
+
+      mergerfs_install_prerequisites:
+        type: bool
+        default: true
+        description: 'Whether the role should install prerequisites for you.'
+
+      mergerfs_remove_undefined_mounts:
+        type: bool
+        default: false
+        description: 'Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.'

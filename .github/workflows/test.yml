@@ -1,0 +1,49 @@
+---
+name: Test
+on:
+  push:
+    branches: [main]
+    tags-ignore:
+      - '**'
+  pull_request:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ansible/ansible-lint@v25.1.2
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - debian11
+          - debian12
+          - fedora40
+          - fedora41
+          - rockylinux9
+          - ubuntu2204
+          - ubuntu2404
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - run: molecule -v test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}

@@ -1,6 +1,6 @@
 ---
 name: Release
-on:  # yamllint disable-line rule:truthy
+on:
   push:
     tags:
       - '*'
@@ -8,7 +8,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   test:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/test.yml
   release:
     runs-on: ubuntu-latest
     needs: [test]

@@ -7,20 +7,17 @@ Install [MergerFS](https://github.com/trapexit/mergerfs) and manage mountpoints.
 
 Install the role: `ansible-galaxy role install tigattack.mergerfs`
 
+> [!NOTE]
+> This role supports Debian-based and RHEL-based distributions.
+
+> [!WARNING] Breaking Change
+> `mergerfs_install_mode` is no longer supported in version 2 of this role. Mergerfs will always be installed from GitHub, per the default behaviour in version 1.
+
 ## Requirements
 
-None.
+* `ansible.posix>=1.0.0` collection.
 
 ## Role Variables
-
-### `mergerfs_install_mode`
-
-Default: `github_releases`
-
-Defines where to download and install the package from:
- - `github_releases`: install from the MergerFS GitHub releases.
- - `package_manager`: install from the Linux distribution package manager.  
-   Note that the MergerFS package does not exists in all distributions, and may be out of date in others, so this will not work under some conditions.
 
 ### `mergerfs_version`
 
@@ -29,9 +26,6 @@ Default: `latest`
 Version to install:
 * `latest`
 * Specific version number, e.g. `2.28.2`
-
-> **Note**
-> This setting only applies when `mergerfs_install_mode` is `github_releases` (default).
 
 ### `mergerfs_mounts`
 

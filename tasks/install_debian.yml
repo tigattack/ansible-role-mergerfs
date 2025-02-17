@@ -1,0 +1,21 @@
+---
+
+- name: Install xz-utils package for .deb package installation
+  ansible.builtin.apt:
+    name: xz-utils
+    state: present
+    update_cache: true
+  become: true
+
+- name: Install mergerfs prerequisites
+  ansible.builtin.apt:
+    name: "{{ mergerfs_prerequisites }}"
+    state: present
+  become: true
+  when: mergerfs_install_prerequisites
+
+- name: Install mergerfs package
+  ansible.builtin.apt:
+    deb: "{{ mergerfs_package_url }}"
+    state: present
+  become: true

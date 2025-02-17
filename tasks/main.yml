@@ -1,22 +1,43 @@
 ---
 
+- name: Assert that OS family is supported
+  ansible.builtin.assert:
+    that: ansible_os_family | lower in ['debian', 'redhat']
+    fail_msg: "Unsupported OS family: {{ ansible_os_family }}"
+
 - name: Include OS-specific variables
   ansible.builtin.include_vars:
     file: "{{ ansible_os_family }}.yml"
-  tags: mergerfs
 
-- name: Install mergerfs prerequisites
-  become: true
-  ansible.builtin.package:
-    name: "{{ mergerfs_prerequisites }}"
-    state: present
-  tags: [mergerfs, mergerfs_install]
-  when: mergerfs_install_prerequisites
+# Note: we don't use the GitHub API to retrieve the latest version because
+# it has rate limits which are hard to avoid in CI (we need a token, authenticate
+# with the API, etc.). Instead, we browse the latest release url which redirects
+# to the release page, where we can find the version number in the URL.
 
-- name: Include install tasks
+- name: Get/parse release info
+  delegate_to: localhost
+  run_once: true
+  block:
+    - name: Get latest release information from GitHub
+      ansible.builtin.uri:
+        url: "{{ mergerfs_github_releases_url }}/latest"
+      register: mergerfs_github_release_page
+      check_mode: false
+
+    - name: Set latest mergerfs version fact
+      ansible.builtin.set_fact:
+        mergerfs_version: "{{ mergerfs_github_release_page['url'].split('/')[-1] }}"
+      when: mergerfs_version == "latest"
+
+    - name: Determine package download url
+      ansible.builtin.set_fact:
+        mergerfs_package_url: >-
+          {{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{
+          mergerfs_pkg_prefix ~ mergerfs_version ~ mergerfs_pkg_suffix }}
+
+- name: Install mergerfs
   ansible.builtin.include_tasks:
-    file: install_from_{{ mergerfs_install_mode }}.yml
-  tags: [mergerfs, mergerfs_install]
+    file: install_{{ ansible_os_family | lower }}.yml
 
 - name: Mount mergerfs filesystems
   ansible.posix.mount:
@@ -24,22 +45,22 @@
     src: "{{ ':'.join(item.branches | mandatory) }}"
     path: "{{ item.path | mandatory }}"
     opts: "{{ item.options | default('defaults') }}"
-    state: "{{ item.state | default('mounted') }}"  # noqa args[module]
+    state: "{{ item.state | default('mounted') }}"
   loop: "{{ mergerfs_mounts }}"
   become: true
-  tags: [mergerfs, mergerfs_install]
 
 - name: Unmount unlisted mergerfs filesystems
+  when: mergerfs_remove_undefined_mounts
   block:
     - name: List existing mergerfs filesystems
       # ansible_mounts doesn't list fuse mounts
       ansible.builtin.command: "findmnt -t fuse.mergerfs -o TARGET -n"
       changed_when: false
       register: existing_mergerfs_mounts
+
     - name: Unmount mergerfs filesystems
       ansible.posix.mount:
         path: "{{ item }}"
         state: absent
       loop: "{{ existing_mergerfs_mounts.stdout_lines }}"
       when: item not in mergerfs_mounts | map(attribute='path') | list
-  when: mergerfs_remove_undefined_mounts
