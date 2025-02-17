@@ -10,6 +10,6 @@
     dest: "{{ mergerfs_tools_clone_dir }}"
 
 - name: Install mergerfs-tools
-  ansible.builtin.make:
+  community.general.make:
     chdir: "{{ mergerfs_tools_clone_dir }}"
     target: install
