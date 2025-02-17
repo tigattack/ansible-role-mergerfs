@@ -19,3 +19,13 @@ mergerfs_install_prerequisites: true
 
 # Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.
 mergerfs_remove_undefined_mounts: false
+
+# Whether to install mergerfs-tools.
+mergerfs_install_tools: false
+
+# URL of the mergerfs-tools GitHub repository.
+# Used to clone the repository.
+mergerfs_tools_github_repo_url: https://github.com/trapexit/mergerfs-tools
+
+# Temporary directory to clone mergerfs-tools into before install.
+mergerfs_tools_clone_dir: /tmp/mergerfs-tools

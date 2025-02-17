@@ -33,3 +33,20 @@ argument_specs:
         type: bool
         default: false
         description: 'Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.'
+
+      mergerfs_install_tools:
+        type: bool
+        default: false
+        description: 'Whether to install mergerfs-tools.'
+
+      mergerfs_tools_github_repo_url:
+        type: str
+        default: https://github.com/trapexit/mergerfs-tools
+        description:
+          - URL of the mergerfs-tools GitHub repository.
+          - Used to clone the repository.
+
+      mergerfs_tools_clone_dir:
+        type: str
+        default: /tmp/mergerfs-tools
+        description: 'Temporary directory to clone mergerfs-tools into before install.'

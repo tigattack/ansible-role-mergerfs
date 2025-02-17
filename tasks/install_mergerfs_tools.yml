@@ -1,0 +1,15 @@
+---
+
+- name: Clone mergerfs-tools # noqa latest[git]
+  ansible.builtin.git:
+    repo: >-
+      {{
+        mergerfs_tools_github_repo_url if mergerfs_tools_github_repo_url.endswith('.git')
+        else (mergerfs_tools_github_repo_url + '.git')
+      }}
+    dest: "{{ mergerfs_tools_clone_dir }}"
+
+- name: Install mergerfs-tools
+  ansible.builtin.make:
+    chdir: "{{ mergerfs_tools_clone_dir }}"
+    target: install
