@@ -16,6 +16,11 @@ platforms:
 
 provisioner:
   name: ansible
+  inventory:
+    group_vars:
+      all:
+        ansible_user: root
+        become_user: root
 
 verifier:
   name: testinfra
