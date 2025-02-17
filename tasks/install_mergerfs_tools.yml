@@ -1,5 +1,10 @@
 ---
 
+- name: Ensure git is installed
+  ansible.builtin.package:
+    name: git
+    state: present
+
 - name: Clone mergerfs-tools # noqa latest[git]
   ansible.builtin.git:
     repo: >-
