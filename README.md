@@ -12,6 +12,7 @@ Install the role: `ansible-galaxy role install tigattack.mergerfs`
 
 > [!WARNING] Breaking Change
 > `mergerfs_install_mode` is no longer supported in version 2 of this role. Mergerfs will always be installed from GitHub, per the default behaviour in version 1.
+> Furthermore, `mergerfs_github_releases_url` is now called `mergerfs_github_repo_url` and should no longer have `/releases` appended.
 
 ## Requirements
 
@@ -46,17 +47,13 @@ Default: `false`
 
 Remove any existing mergerfs mounts that are not listed in `mergerfs_mounts`
 
-### `mergerfs_github_releases_url`
-
-Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
-
-URL of the MergerFS GitHub releases page.
-
 ### `mergerfs_install_prerequisites`
 
 Default: `true`
 
-Whether the role should install [prerequisites](defaults/main.yml) for you. If in doubt, leave on default.
+Whether the role should install prerequisites for using mergerfs. If in doubt, leave default.
+
+Prerequisites for each supported distribution family are listed in their respective files in [vars/](vars/).
 
 ### `mergerfs_install_tools`
 
@@ -66,6 +63,12 @@ Whether to install [mergerfs-tools](https://github.com/trapexit/mergerfs-tools).
 
 > [!NOTE]
 > As mergerfs-tools must be cloned from GitHub to install, this role will also ensure `git` is installed on the host if this variable is `true`.
+
+### `mergerfs_github_repo_url`
+
+Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
+
+URL of the mergerfs GitHub repository. Used to determine the latest version and download the package.
 
 ### `mergerfs_tools_github_repo_url`
 
@@ -78,10 +81,6 @@ URL of the mergerfs-tools GitHub repository. Used to clone the repository.
 Default: `/tmp/mergerfs-tools`
 
 Temporary directory to clone mergerfs-tools into before install.
-
-## Dependencies
-
-None.
 
 ## Example Playbook
 

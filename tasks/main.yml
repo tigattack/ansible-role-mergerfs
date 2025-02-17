@@ -20,7 +20,7 @@
   block:
     - name: Get latest release information from GitHub
       ansible.builtin.uri:
-        url: "{{ mergerfs_github_releases_url }}/latest"
+        url: "{{ mergerfs_github_repo_url }}/releases/latest"
       register: mergerfs_github_release_page
       check_mode: false
 
@@ -32,7 +32,7 @@
     - name: Determine package download url
       ansible.builtin.set_fact:
         mergerfs_package_url: >-
-          {{ mergerfs_github_releases_url }}/download/{{ mergerfs_version }}/{{
+          {{ mergerfs_github_repo_url }}/releases/download/{{ mergerfs_version }}/{{
           mergerfs_pkg_prefix ~ mergerfs_version ~ mergerfs_pkg_suffix }}
 
 - name: Install mergerfs

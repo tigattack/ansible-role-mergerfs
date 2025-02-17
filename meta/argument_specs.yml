@@ -19,25 +19,27 @@ argument_specs:
         default: []
         description: 'Mergerfs mountpoints to create. See README.md for examples.'
 
-      mergerfs_github_releases_url:
-        type: str
-        default: https://github.com/trapexit/mergerfs/releases
-        description: 'URL of the mergerfs GitHub releases page'
-
-      mergerfs_install_prerequisites:
-        type: bool
-        default: true
-        description: 'Whether the role should install prerequisites for you.'
-
       mergerfs_remove_undefined_mounts:
         type: bool
         default: false
         description: 'Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.'
 
+      mergerfs_install_prerequisites:
+        type: bool
+        default: true
+        description: 'Whether the role should install prerequisites for using mergerfs.'
+
       mergerfs_install_tools:
         type: bool
         default: false
         description: 'Whether to install mergerfs-tools.'
+
+      mergerfs_github_repo_url:
+        type: str
+        default: https://github.com/trapexit/mergerfs/releases
+        description:
+          - URL of the mergerfs GitHub repository.
+          - Used to determine the latest version and download the package.
 
       mergerfs_tools_github_repo_url:
         type: str
