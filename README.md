@@ -30,7 +30,9 @@ Version to install:
 
 ### `mergerfs_mounts`
 
-MergerFS mountpoints to create. For example:
+MergerFS mountpoints to create. The path will be actively mounted and configured in `fstab` by default.
+
+Example:
 
 ```yml
 mergerfs_mounts:
@@ -41,11 +43,21 @@ mergerfs_mounts:
     options: allow_other,use_ino
 ```
 
+For further options, see the [ansible.posix.mount](https://docs.ansible.com/ansible/latest/collections/ansible/posix/mount_module.html) documentation.
+
+Supported `ansible.posix.mount` options are:
+* `src` (called `branches` in this role)
+* `path`
+* `opts` (called `options` in this role)
+* `state`
+
+Please create an issue if support for further parameters is desired.
+
 ### `mergerfs_remove_undefined_mounts`
 
 Default: `false`
 
-Remove any existing mergerfs mounts that are not listed in `mergerfs_mounts`
+Remove any mounted mergerfs filesystems that are not listed in the output of `mergerfs_mounts`.
 
 ### `mergerfs_install_prerequisites`
 
