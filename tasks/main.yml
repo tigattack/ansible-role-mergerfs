@@ -48,7 +48,7 @@
   ansible.posix.mount:
     fstype: fuse.mergerfs
     src: "{{ ':'.join(item.branches | mandatory) }}"
-    path: "{{ item.path | mandatory }}"
+    path: "{{ item.path | mandatory(msg='`path` must be defined for all mergerfs_mounts.') }}"
     opts: "{{ item.options | default('defaults') }}"
     state: "{{ item.state | default('mounted') }}"
   loop: "{{ mergerfs_mounts }}"
