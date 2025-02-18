@@ -1,7 +1,0 @@
----
-
-collections:
-  - name: ansible.posix
-    version: ">=1.0.0"
-  - name: community.general
-    version: ">=0.1.0"
