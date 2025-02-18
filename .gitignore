@@ -1,7 +1,6 @@
-*.retry
 *.pyc
+*.retry
 __pycache__
-.venv/
-.cache/
-.mypy_cache/
 .ansible
+.cache
+.venv
