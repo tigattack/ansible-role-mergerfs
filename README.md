@@ -58,6 +58,27 @@ Default: `true`
 
 Whether the role should install [prerequisites](defaults/main.yml) for you. If in doubt, leave on default.
 
+### `mergerfs_install_tools`
+
+Default: `false`
+
+Whether to install [mergerfs-tools](https://github.com/trapexit/mergerfs-tools).
+
+> [!NOTE]
+> As mergerfs-tools must be cloned from GitHub to install, this role will also ensure `git` is installed on the host if this variable is `true`.
+
+### `mergerfs_tools_github_repo_url`
+
+Default: [`https://github.com/trapexit/mergerfs-tools`](https://github.com/trapexit/mergerfs-tools)
+
+URL of the mergerfs-tools GitHub repository. Used to clone the repository.
+
+### `mergerfs_tools_clone_dir`
+
+Default: `/tmp/mergerfs-tools`
+
+Temporary directory to clone mergerfs-tools into before install.
+
 ## Dependencies
 
 None.

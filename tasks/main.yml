@@ -39,6 +39,11 @@
   ansible.builtin.include_tasks:
     file: install_{{ ansible_os_family | lower }}.yml
 
+- name: Install mergerfs-tools
+  ansible.builtin.include_tasks:
+    file: install_mergerfs_tools.yml
+  when: mergerfs_install_tools
+
 - name: Mount mergerfs filesystems
   ansible.posix.mount:
     fstype: fuse.mergerfs

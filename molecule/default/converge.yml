@@ -7,5 +7,6 @@
         branches:
           - /mnt/data*
         options: allow_other,use_ino
+    mergerfs_install_tools: true
   roles:
     - role: ansible-role-mergerfs
