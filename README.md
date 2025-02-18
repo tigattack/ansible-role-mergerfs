@@ -120,7 +120,7 @@ This role was created in 2020 by [Sylvain Prat](https://github.com/sprat).
 After Sylvain archived the repository some time ago, I, [tigattack](https://github.com/tigattack), forked it in late 2022 to make some quality of life improvements and keep it maintained.
 
 
-[build_badge]:  https://img.shields.io/github/actions/workflow/status/tigattack/ansible-role-mergerfs/ci.yml?branch=main&label=Molecule%20test
-[build_link]:   https://github.com/tigattack/ansible-role-mergerfs/actions?query=workflow:CI
+[build_badge]:  https://img.shields.io/github/actions/workflow/status/tigattack/ansible-role-mergerfs/test.yml?branch=main&label=Molecule%20test
+[build_link]:   https://github.com/tigattack/ansible-role-mergerfs/actions?query=workflow:Test
 [galaxy_badge]: https://img.shields.io/ansible/role/d/tigattack/mergerfs
 [galaxy_link]:  https://galaxy.ansible.com/tigattack/mergerfs
