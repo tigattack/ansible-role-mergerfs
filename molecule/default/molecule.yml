@@ -20,6 +20,12 @@ provisioner:
     group_vars:
       all:
         ansible_user: root
+        mergerfs_install_tools: true
+        mergerfs_mounts:
+          - path: /mnt/storage
+            branches:
+              - /mnt/data*
+            options: allow_other,use_ino
 
 verifier:
   name: testinfra
