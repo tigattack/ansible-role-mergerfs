@@ -58,7 +58,7 @@ argument_specs:
 
       mergerfs_github_repo_url:
         type: str
-        default: https://github.com/trapexit/mergerfs/releases
+        default: https://github.com/trapexit/mergerfs
         description:
           - URL of the mergerfs GitHub repository.
           - Used to determine the latest version and download the package.

@@ -78,7 +78,7 @@ Whether to install [mergerfs-tools](https://github.com/trapexit/mergerfs-tools).
 
 ### `mergerfs_github_repo_url`
 
-Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
+Default: [`https://github.com/trapexit/mergerfs`](https://github.com/trapexit/mergerfs)
 
 URL of the mergerfs GitHub repository. Used to determine the latest version and download the package.
 
