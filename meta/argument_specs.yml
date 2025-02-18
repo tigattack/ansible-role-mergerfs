@@ -4,9 +4,9 @@ argument_specs:
     short_description: Install and configure Mergerfs
     description:
       - This role will install and configure Mergerfs — A featureful union filesystem.
-      - 'Prerequisites:'
-      - '  - Ansible collectio ansible.posix>=1.0.0'
-    version_added: '2.0.0'
+      - "Prerequisites:"
+      - "  - Ansible collectio ansible.posix>=1.0.0"
+    version_added: "2.0.0"
     author: tigattack
     options:
       mergerfs_version:
@@ -17,27 +17,51 @@ argument_specs:
       mergerfs_mounts:
         type: list
         default: []
-        description: 'Mergerfs mountpoints to create. See README.md for examples.'
-
-      mergerfs_github_releases_url:
-        type: str
-        default: https://github.com/trapexit/mergerfs/releases
-        description: 'URL of the mergerfs GitHub releases page'
-
-      mergerfs_install_prerequisites:
-        type: bool
-        default: true
-        description: 'Whether the role should install prerequisites for you.'
+        description: "Mergerfs mountpoints to create. See README.md for details."
+        options:
+          path:
+            type: path
+            description: "Path to mount the mergerfs filesystem."
+          branches:
+            type: list
+            elements: str
+            description: "List of paths to merge."
+          options:
+            type: str
+            description: "Mount options."
+          state:
+            type: str
+            description: "Whether the filesystem should be mounted or unmounted."
+            choices:
+              - absent
+              - absent_from_fstab
+              - mounted
+              - present
+              - unmounted
+              - remounted
+              - ephemeral
 
       mergerfs_remove_undefined_mounts:
         type: bool
         default: false
-        description: 'Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.'
+        description: "Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted."
+
+      mergerfs_install_prerequisites:
+        type: bool
+        default: true
+        description: 'Whether the role should install prerequisites for using mergerfs.'
 
       mergerfs_install_tools:
         type: bool
         default: false
-        description: 'Whether to install mergerfs-tools.'
+        description: "Whether to install mergerfs-tools."
+
+      mergerfs_github_repo_url:
+        type: str
+        default: https://github.com/trapexit/mergerfs
+        description:
+          - URL of the mergerfs GitHub repository.
+          - Used to determine the latest version and download the package.
 
       mergerfs_tools_github_repo_url:
         type: str
@@ -47,6 +71,6 @@ argument_specs:
           - Used to clone the repository.
 
       mergerfs_tools_clone_dir:
-        type: str
+        type: path
         default: /tmp/mergerfs-tools
-        description: 'Temporary directory to clone mergerfs-tools into before install.'
+        description: "Temporary directory to clone mergerfs-tools into before install."

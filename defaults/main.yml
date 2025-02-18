@@ -2,26 +2,20 @@
 # Version to install: "latest" version or a specific version number, e.g. "2.28.2"
 mergerfs_version: latest
 
-# Mergerfs mountpoints to create. For example:
-# mergerfs_mounts:
-#   - path: /mnt/storage
-#     branches:
-#       - /mnt/data*
-#       - /mnt/other
-#     options: allow_other,use_ino
+# Mergerfs mountpoints to create. See README for details.
 mergerfs_mounts: []
-
-# URL of the mergerfs GitHub releases page.
-mergerfs_github_releases_url: https://github.com/trapexit/mergerfs/releases
-
-# Whether the role should install prerequisites for you.
-mergerfs_install_prerequisites: true
 
 # Whether mergerfs mounts not listed in `mergerfs_mounts` should be unmounted.
 mergerfs_remove_undefined_mounts: false
 
+# Whether the role should install prerequisites for using mergerfs.
+mergerfs_install_prerequisites: true
+
 # Whether to install mergerfs-tools.
 mergerfs_install_tools: false
+
+# URL of the mergerfs GitHub repository.
+mergerfs_github_repo_url: https://github.com/trapexit/mergerfs
 
 # URL of the mergerfs-tools GitHub repository.
 # Used to clone the repository.

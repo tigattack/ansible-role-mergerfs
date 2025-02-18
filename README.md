@@ -12,6 +12,7 @@ Install the role: `ansible-galaxy role install tigattack.mergerfs`
 
 > [!WARNING] Breaking Change
 > `mergerfs_install_mode` is no longer supported in version 2 of this role. Mergerfs will always be installed from GitHub, per the default behaviour in version 1.
+> Furthermore, `mergerfs_github_releases_url` is now called `mergerfs_github_repo_url` and should no longer have `/releases` appended.
 
 ## Requirements
 
@@ -29,7 +30,9 @@ Version to install:
 
 ### `mergerfs_mounts`
 
-MergerFS mountpoints to create. For example:
+MergerFS mountpoints to create. The path will be actively mounted and configured in `fstab` by default.
+
+Example:
 
 ```yml
 mergerfs_mounts:
@@ -40,23 +43,29 @@ mergerfs_mounts:
     options: allow_other,use_ino
 ```
 
+For further options, see the [ansible.posix.mount](https://docs.ansible.com/ansible/latest/collections/ansible/posix/mount_module.html) documentation.
+
+Supported `ansible.posix.mount` options are:
+* `src` (called `branches` in this role)
+* `path`
+* `opts` (called `options` in this role)
+* `state`
+
+Please create an issue if support for further parameters is desired.
+
 ### `mergerfs_remove_undefined_mounts`
 
 Default: `false`
 
-Remove any existing mergerfs mounts that are not listed in `mergerfs_mounts`
-
-### `mergerfs_github_releases_url`
-
-Default: [`https://github.com/trapexit/mergerfs/releases`](https://github.com/trapexit/mergerfs/releases)
-
-URL of the MergerFS GitHub releases page.
+Remove any mounted mergerfs filesystems that are not listed in the output of `mergerfs_mounts`.
 
 ### `mergerfs_install_prerequisites`
 
 Default: `true`
 
-Whether the role should install [prerequisites](defaults/main.yml) for you. If in doubt, leave on default.
+Whether the role should install prerequisites for using mergerfs. If in doubt, leave default.
+
+Prerequisites for each supported distribution family are listed in their respective files in [vars/](vars/).
 
 ### `mergerfs_install_tools`
 
@@ -66,6 +75,12 @@ Whether to install [mergerfs-tools](https://github.com/trapexit/mergerfs-tools).
 
 > [!NOTE]
 > As mergerfs-tools must be cloned from GitHub to install, this role will also ensure `git` is installed on the host if this variable is `true`.
+
+### `mergerfs_github_repo_url`
+
+Default: [`https://github.com/trapexit/mergerfs`](https://github.com/trapexit/mergerfs)
+
+URL of the mergerfs GitHub repository. Used to determine the latest version and download the package.
 
 ### `mergerfs_tools_github_repo_url`
 
@@ -78,10 +93,6 @@ URL of the mergerfs-tools GitHub repository. Used to clone the repository.
 Default: `/tmp/mergerfs-tools`
 
 Temporary directory to clone mergerfs-tools into before install.
-
-## Dependencies
-
-None.
 
 ## Example Playbook
 
