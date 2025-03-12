@@ -23,6 +23,7 @@
         url: "{{ mergerfs_github_repo_url }}/releases/latest"
       register: mergerfs_github_release_page
       check_mode: false
+      when: mergerfs_version == "latest"
 
     - name: Set latest mergerfs version fact
       ansible.builtin.set_fact:
