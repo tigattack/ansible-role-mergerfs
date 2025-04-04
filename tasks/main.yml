@@ -15,8 +15,6 @@
 # to the release page, where we can find the version number in the URL.
 
 - name: Get/parse release info
-  delegate_to: localhost
-  run_once: true
   block:
     - name: Get latest release information from GitHub
       ansible.builtin.uri:
