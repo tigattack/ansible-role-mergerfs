@@ -10,8 +10,9 @@ Install the role: `ansible-galaxy role install tigattack.mergerfs`
 > [!NOTE]
 > This role supports Debian-based and RHEL-based distributions.
 
-> [!WARNING] Breaking Change
-> `mergerfs_install_mode` is no longer supported in version 2 of this role. Mergerfs will always be installed from GitHub, per the default behaviour in version 1.
+> [!WARNING]
+> **Breaking Change**  
+> `mergerfs_install_mode` is no longer supported in version 2 of this role. Mergerfs will always be installed from GitHub, per the default behaviour in version 1.  
 > Furthermore, `mergerfs_github_releases_url` is now called `mergerfs_github_repo_url` and should no longer have `/releases` appended.
 
 ## Requirements
