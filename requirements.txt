@@ -1,4 +1,4 @@
 ansible-core
-molecule-plugins[docker]==23.6.0
+molecule-plugins[docker]==25.8.12
 molecule[test]==25.7.0
 pytest-testinfra
