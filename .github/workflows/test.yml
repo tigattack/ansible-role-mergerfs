@@ -58,7 +58,9 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          # TODO: switch back to 3.x when Ansible 2.20 is out
+          # RuntimeError: Python 3.14 requires ansible-core version >= 2.20.0, and we found 2.19.3.
+          python-version: '3.13'
           cache: 'pip'
 
       - run: pip install -r requirements.txt
