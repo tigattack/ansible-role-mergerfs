@@ -37,3 +37,12 @@ verifier:
   name: testinfra
   env:
     PYTEST_CHECK_TEST_ID_REGEX: "0"
+
+scenario:
+  test_sequence:
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify
+    - destroy
