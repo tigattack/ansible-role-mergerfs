@@ -14,11 +14,13 @@ platforms:
     privileged: true
     pre_build_image: true
 
+ansible:
+  cfg:
+    defaults:
+      # inject_facts_as_vars: false
+
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      roles_path: "$MOLECULE_PROJECT_DIRECTORY/.."
   inventory:
     group_vars:
       all:
