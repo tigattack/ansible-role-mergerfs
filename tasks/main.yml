@@ -2,12 +2,12 @@
 
 - name: Assert that OS family is supported
   ansible.builtin.assert:
-    that: ansible_os_family | lower in ['debian', 'redhat']
-    fail_msg: "Unsupported OS family: {{ ansible_os_family }}"
+    that: ansible_facts.os_family | lower in ['debian', 'redhat']
+    fail_msg: "Unsupported OS family: {{ ansible_facts.os_family }}"
 
 - name: Include OS-specific variables
   ansible.builtin.include_vars:
-    file: "{{ ansible_os_family }}.yml"
+    file: "{{ ansible_facts.os_family }}.yml"
 
 # Note: we don't use the GitHub API to retrieve the latest version because
 # it has rate limits which are hard to avoid in CI (we need a token, authenticate
@@ -35,7 +35,7 @@
 
 - name: Install mergerfs
   ansible.builtin.include_tasks:
-    file: install_{{ ansible_os_family | lower }}.yml
+    file: install_{{ ansible_facts.os_family | lower }}.yml
 
 - name: Install mergerfs-tools
   ansible.builtin.include_tasks:
@@ -56,7 +56,7 @@
   when: mergerfs_remove_undefined_mounts
   block:
     - name: List existing mergerfs filesystems
-      # ansible_mounts doesn't list fuse mounts
+      # ansible_facts.mounts doesn't list fuse mounts
       ansible.builtin.command: "findmnt -t fuse.mergerfs -o TARGET -n"
       changed_when: false
       register: existing_mergerfs_mounts
