@@ -1,11 +1,14 @@
 ---
 mergerfs_prerequisites:
   - fuse
+
+mergerfs_host_dist: "{{ ansible_facts.distribution | lower }}"
+
 mergerfs_dist: >-
-  {{ ansible_distribution | lower }}-{{
-    ansible_distribution_release if ansible_distribution | lower != 'debian' or (
-      ansible_distribution | lower != 'debian' and
-      ansible_distribution_major_version | int <= 12
+  {{ mergerfs_host_dist }}-{{
+    ansible_facts.distribution_release if mergerfs_host_dist != 'debian' or (
+      mergerfs_host_dist != 'debian' and
+      ansible_facts.distribution_major_version | int <= 12
     ) else 'bookworm'
   }}
 mergerfs_arch_map:
@@ -13,6 +16,6 @@ mergerfs_arch_map:
   i386: i386
   aarch64: arm64
   armv7l: armhf
-mergerfs_arch: "{{ mergerfs_arch_map[ansible_architecture] }}"
+mergerfs_arch: "{{ mergerfs_arch_map[ansible_facts.architecture] }}"
 mergerfs_pkg_prefix: "mergerfs_"
 mergerfs_pkg_suffix: ".{{ mergerfs_dist }}_{{ mergerfs_arch }}.deb"

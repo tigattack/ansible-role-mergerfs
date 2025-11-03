@@ -16,6 +16,7 @@ ansible:
   cfg:
     defaults:
       callbacks_enabled: profile_tasks
+      inject_facts_as_vars: false
 
 provisioner:
   name: ansible
