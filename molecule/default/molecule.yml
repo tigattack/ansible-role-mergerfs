@@ -1,24 +1,24 @@
 ---
-dependency:
-  name: galaxy
-
 driver:
   name: docker
 
 platforms:
   - name: instance
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible:latest"
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian13}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
 
+ansible:
+  cfg:
+    defaults:
+      callbacks_enabled: profile_tasks
+
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      roles_path: "$MOLECULE_PROJECT_DIRECTORY/.."
   inventory:
     group_vars:
       all:
@@ -34,3 +34,12 @@ verifier:
   name: testinfra
   env:
     PYTEST_CHECK_TEST_ID_REGEX: "0"
+
+scenario:
+  test_sequence:
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify
+    - destroy

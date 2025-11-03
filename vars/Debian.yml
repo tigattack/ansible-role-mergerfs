@@ -1,7 +1,13 @@
 ---
 mergerfs_prerequisites:
   - fuse
-mergerfs_dist: "{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}"
+mergerfs_dist: >-
+  {{ ansible_distribution | lower }}-{{
+    ansible_distribution_release if ansible_distribution | lower != 'debian' or (
+      ansible_distribution | lower != 'debian' and
+      ansible_distribution_major_version | int <= 12
+    ) else 'bookworm'
+  }}
 mergerfs_arch_map:
   x86_64: amd64
   i386: i386

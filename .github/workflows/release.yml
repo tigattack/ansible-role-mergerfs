@@ -9,17 +9,16 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/test.yml
+
   release:
     runs-on: ubuntu-latest
     needs: [test]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with:
-          path: 'tigattack.mergerfs'
+          path: ${{ needs.test.outputs.role_name }}
 
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
 
@@ -30,10 +29,8 @@ jobs:
           secrets: |
             e890ac15-9c21-439a-a5d2-b118013ceeb6 > GALAXY_API_KEY
 
-      - name: Install Ansible
-        run: pip3 install ansible-core
+      - run: pip3 install ansible-core
 
-      - name: Import role to Galaxy
-        run: >-
+      - run: >-
           ansible-galaxy role import --api-key "$GALAXY_API_KEY"
           ${{ github.repository_owner }} ${{ github.event.repository.name }}
