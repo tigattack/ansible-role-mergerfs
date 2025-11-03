@@ -44,11 +44,12 @@ jobs:
     strategy:
       matrix:
         distro:
-          - debian11
           - debian12
-          - fedora40
+          - debian13
           - fedora41
+          - fedora42
           - rockylinux9
+          - rockylinux10
           - ubuntu2204
           - ubuntu2404
 
