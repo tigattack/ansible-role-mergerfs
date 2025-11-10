@@ -15,11 +15,11 @@ mergerfs_install_prerequisites: true
 mergerfs_install_tools: false
 
 # URL of the mergerfs GitHub repository.
-mergerfs_github_repo_url: https://github.com/trapexit/mergerfs
+mergerfs_github_repo_url: 'https://github.com/trapexit/mergerfs'
 
 # URL of the mergerfs-tools GitHub repository.
 # Used to clone the repository.
-mergerfs_tools_github_repo_url: https://github.com/trapexit/mergerfs-tools
+mergerfs_tools_github_repo_url: 'https://github.com/trapexit/mergerfs-tools'
 
 # Temporary directory to clone mergerfs-tools into before install.
 mergerfs_tools_clone_dir: /tmp/mergerfs-tools
