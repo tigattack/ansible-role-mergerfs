@@ -1,0 +1,7 @@
+---
+
+remotes:
+  - git_url: git@github.com:tigattack/repo_utils.git
+    # refetch: true
+    configs:
+      - lefthook_ansible_role.yml

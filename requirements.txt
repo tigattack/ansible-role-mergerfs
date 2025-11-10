@@ -4,3 +4,5 @@ ansible-lint==25.9.2
 molecule-plugins[docker]==25.8.12
 molecule==25.9.0
 pytest-testinfra~=10.0.0
+
+lefthook~=2.0.3
