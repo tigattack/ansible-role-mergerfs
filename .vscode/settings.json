@@ -1,6 +1,11 @@
 {
+  "ansible.python.activationScript": ".venv/bin/activate",
+  "ansible.python.interpreterPath": "${workspaceFolder}/.venv/bin/python",
   "files.associations": {
-    "*.yml": "ansible",
-    "*.yaml": "ansible",
+    ".github/workflows/{*.yml,*.yaml}": "github-actions-workflow",
+    "**/{*.yml,*.yaml}": "ansible",
+    "**/*.j2": "ansible-jinja",
+    "lefthook.yml": "yaml",
+    "meta/{*.yml,*.yaml}": "yaml",
   },
 }
