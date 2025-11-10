@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: ansible/ansible-lint@v25.9.2
+      - uses: ansible/ansible-lint@v25.11.0
         with:
           args: "--exclude molecule"
 
