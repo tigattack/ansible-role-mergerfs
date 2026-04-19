@@ -2,8 +2,8 @@
 
 set -e
 
-namespace=`yq eval '.galaxy_info.namespace' meta/main.yml`
-role_name=`yq eval '.galaxy_info.role_name' meta/main.yml`
+namespace=$(yq eval '.galaxy_info.namespace' meta/main.yml)
+role_name=$(yq eval '.galaxy_info.role_name' meta/main.yml)
 
 role_symlink_dir="./${namespace}.${role_name}"
 
@@ -20,4 +20,4 @@ popd > /dev/null
 
 rm "$role_symlink_dir"
 
-exit ${exit_code:-0}
+exit "${exit_code:-0}"
